@@ -110,7 +110,8 @@
   }
 
   .card-interactive:hover,
-  .card-interactive:focus-visible {
+  .card-interactive:focus-visible,
+  .card-interactive:focus-within {
     border-color: rgba(124, 133, 225, 0.55);
     background-color: var(--color-surface-hover);
     transform: translateY(-2px);
@@ -194,6 +195,75 @@
     background: var(--color-surface-hover);
     border-color: rgba(255, 255, 255, 0.22);
     transform: translateY(-1px);
+  }
+
+  .btn-meta {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    opacity: 0.88;
+    font-family: var(--font-mono);
+  }
+
+  .btn-sep {
+    color: rgba(255, 255, 255, 0.4);
+  }
+
+  .btn-ghost .btn-sep {
+    color: var(--color-fg-subtle);
+  }
+
+  .card-link-overlay {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    border-radius: inherit;
+  }
+
+  .card-action {
+    position: relative;
+    z-index: 2;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
+    padding: 0.25rem 0.55rem;
+    border-radius: 7px;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.01em;
+    line-height: 1;
+    color: var(--color-fg-muted);
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid var(--color-border);
+    transition: background-color 200ms var(--ease-out-expo), border-color 200ms var(--ease-out-expo), color 200ms var(--ease-out-expo), transform 200ms var(--ease-out-expo);
+    white-space: nowrap;
+  }
+
+  .card-action:hover {
+    color: var(--color-fg);
+    border-color: var(--color-border-strong);
+    background: rgba(255, 255, 255, 0.06);
+    transform: translateY(-1px);
+  }
+
+  .card-action--star:hover {
+    color: var(--color-fg);
+    border-color: rgba(227, 179, 65, 0.42);
+    background: rgba(227, 179, 65, 0.10);
+  }
+
+  .card-action--star svg {
+    color: var(--color-star);
+  }
+
+  .card-action-count {
+    color: var(--color-fg-muted);
+    font-variant-numeric: tabular-nums;
+  }
+
+  .card-action:hover .card-action-count {
+    color: var(--color-fg);
   }
 
   .section-eyebrow {
@@ -339,7 +409,8 @@
       transform: none;
     }
     .card-interactive:hover,
-    .card-interactive:focus-visible {
+    .card-interactive:focus-visible,
+    .card-interactive:focus-within {
       transform: none;
     }
     .scroll-hint {

@@ -98,5 +98,17 @@ const ogImage = new URL("/og-image.png", site).href;
       {t.skip}
     </a>
     <slot />
+    <script is:inline>
+      document.addEventListener("click", function (e) {
+        var el = e.target;
+        while (el && el !== document.body) {
+          if (el.dataset && el.dataset.cardAction !== undefined) {
+            e.stopPropagation();
+            return;
+          }
+          el = el.parentElement;
+        }
+      }, true);
+    </script>
   </body>
 </html>

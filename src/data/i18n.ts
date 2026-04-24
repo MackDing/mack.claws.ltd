@@ -24,7 +24,14 @@ export const i18n = {
       titleLine3c: "and",
       titleLine3d: "developers",
       sub: "AI-native developer in Shenzhen. Most of my work is open source \u2014 small, focused tools at the edge of AI agents, LLM gateways, and the long-running developer loop. Built alongside Claude Code, Codex, and a lot of curiosity.",
-      ctaGithub: "My GitHub",
+      ctaFollow: "Follow @MackDing",
+      ctaFollowAria: (n: number | null) =>
+        n === null
+          ? "Follow @MackDing on GitHub (opens in new tab)"
+          : `Follow @MackDing on GitHub, ${n} followers (opens in new tab)`,
+      ctaStarProjects: "Star my projects",
+      ctaStarProjectsAria:
+        "Star my projects on GitHub (opens in new tab)",
       ctaHi: "Say hi",
       scroll: "Scroll",
       scrollAria: "Scroll to projects",
@@ -58,6 +65,11 @@ export const i18n = {
       body: "Grouped by what they\u2019re for. Click any card to open on GitHub.",
       docsChip: "docs",
       cardAria: (name: string) => `${name} on GitHub (opens in new tab)`,
+      starLabel: "Star",
+      starAria: (name: string, count: number | null) =>
+        count === null
+          ? `Star ${name} on GitHub (opens in new tab)`
+          : `Star ${name} on GitHub, ${count} stars (opens in new tab)`,
     },
     groups: {
       agents: {
@@ -91,6 +103,9 @@ export const i18n = {
       placeholder: "More upstream work lands here soon.",
       cardAria: (project: string, pr: number) =>
         `${project} PR #${pr} (opens in new tab)`,
+      viewPr: "View PR",
+      viewPrAria: (project: string, pr: number) =>
+        `Open ${project} PR #${pr} on GitHub (opens in new tab)`,
     },
     footer: {
       tagline:
@@ -137,7 +152,14 @@ export const i18n = {
       titleLine3c: "\u4E0E",
       titleLine3d: "\u5F00\u53D1\u8005",
       sub: "AI-native \u5F00\u53D1\u8005\uFF0C\u5728\u6DF1\u5733\u3002\u5F00\u6E90\u4E3A\u4E3B \u2014\u2014 \u4E13\u6CE8\u5728 AI Agent\u3001LLM \u7F51\u5173\u3001\u4EE5\u53CA\u957F\u8DD1\u7684\u5F00\u53D1\u8005\u5DE5\u4F5C\u6D41\u7684\u8FB9\u754C\u4E0A\u3002\u7528 Claude Code\u3001Codex \u548C\u4E00\u5806\u597D\u5947\u5FC3\u9020\u51FA\u6765\u3002",
-      ctaGithub: "\u6211\u7684 GitHub",
+      ctaFollow: "\u5173\u6CE8 @MackDing",
+      ctaFollowAria: (n: number | null) =>
+        n === null
+          ? "\u5728 GitHub \u4E0A\u5173\u6CE8 @MackDing\uFF08\u65B0\u6807\u7B7E\u9875\u6253\u5F00\uFF09"
+          : `\u5728 GitHub \u4E0A\u5173\u6CE8 @MackDing\uFF0C\u5F53\u524D ${n} \u4F4D\u5173\u6CE8\u8005\uFF08\u65B0\u6807\u7B7E\u9875\u6253\u5F00\uFF09`,
+      ctaStarProjects: "\u7ED9\u6211\u7684\u9879\u76EE\u70B9 Star",
+      ctaStarProjectsAria:
+        "\u5728 GitHub \u4E0A\u7ED9\u6211\u7684\u9879\u76EE\u70B9 Star\uFF08\u65B0\u6807\u7B7E\u9875\u6253\u5F00\uFF09",
       ctaHi: "\u6253\u4E2A\u62DB\u547C",
       scroll: "\u4E0B\u6ED1",
       scrollAria: "\u6EDA\u52A8\u5230\u9879\u76EE\u680F",
@@ -172,6 +194,11 @@ export const i18n = {
       docsChip: "\u6587\u6863",
       cardAria: (name: string) =>
         `\u5728 GitHub \u4E0A\u67E5\u770B ${name}\uFF08\u65B0\u6807\u7B7E\u9875\u6253\u5F00\uFF09`,
+      starLabel: "Star",
+      starAria: (name: string, count: number | null) =>
+        count === null
+          ? `\u5728 GitHub \u4E0A\u7ED9 ${name} \u70B9 Star\uFF08\u65B0\u6807\u7B7E\u9875\u6253\u5F00\uFF09`
+          : `\u5728 GitHub \u4E0A\u7ED9 ${name} \u70B9 Star\uFF0C\u5F53\u524D ${count} \u661F\uFF08\u65B0\u6807\u7B7E\u9875\u6253\u5F00\uFF09`,
     },
     groups: {
       agents: {
@@ -205,6 +232,9 @@ export const i18n = {
       placeholder: "\u66F4\u591A\u4E0A\u6E38\u5DE5\u4F5C\uFF0C\u5F88\u5FEB\u4F1A\u843D\u5728\u8FD9\u91CC\u3002",
       cardAria: (project: string, pr: number) =>
         `${project} PR #${pr}\uFF08\u65B0\u6807\u7B7E\u9875\u6253\u5F00\uFF09`,
+      viewPr: "\u67E5\u770B PR",
+      viewPrAria: (project: string, pr: number) =>
+        `\u5728 GitHub \u4E0A\u6253\u5F00 ${project} PR #${pr}\uFF08\u65B0\u6807\u7B7E\u9875\u6253\u5F00\uFF09`,
     },
     footer: {
       tagline:

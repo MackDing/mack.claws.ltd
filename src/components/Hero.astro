@@ -2,10 +2,15 @@
 import Icon from "./Icon.astro";
 import LangToggle from "./LangToggle.astro";
 import { i18n, type Lang } from "../data/i18n";
+import { getGitHubData } from "../data/github";
+import { products } from "../data/products";
 
 type Props = { lang?: Lang };
 const { lang = "en" } = Astro.props;
 const t = i18n[lang];
+
+const gh = await getGitHubData(products.map((p) => p.repo));
+const followers = gh.user?.followers ?? null;
 ---
 
 <section class="relative overflow-hidden bg-gradient-hero">
@@ -75,11 +80,28 @@ const t = i18n[lang];
           href="https://github.com/MackDing"
           target="_blank"
           rel="noopener noreferrer"
+          aria-label={t.hero.ctaFollowAria(followers)}
           class="btn btn-primary"
         >
           <Icon name="github" size={16} />
-          {t.hero.ctaGithub}
+          <span>{t.hero.ctaFollow}</span>
+          {followers !== null && (
+            <span class="btn-meta">
+              <span class="btn-sep" aria-hidden="true">&middot;</span>
+              <span class="tabular-nums">{followers}</span>
+            </span>
+          )}
           <Icon name="arrow-up-right" size={14} />
+        </a>
+        <a
+          href="https://github.com/MackDing?tab=repositories"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label={t.hero.ctaStarProjectsAria}
+          class="btn btn-ghost"
+        >
+          <Icon name="star" size={14} class="text-[color:var(--color-star)]" />
+          {t.hero.ctaStarProjects}
         </a>
         <a
           href="https://t.me/MackClaws"

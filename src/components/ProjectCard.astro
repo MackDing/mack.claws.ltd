@@ -6,9 +6,10 @@ import type { Product } from "../data/products";
 type Props = {
   product: Product;
   lang?: Lang;
+  liveStars?: number;
 };
 
-const { product, lang = "en" } = Astro.props;
+const { product, lang = "en", liveStars } = Astro.props;
 const t = i18n[lang];
 
 const langColorVar: Record<string, string> = {
@@ -22,15 +23,27 @@ const langColorVar: Record<string, string> = {
 const langDot = product.language ? langColorVar[product.language] : null;
 const [owner] = product.repo.split("/");
 const pitch = product.pitch[lang];
+
+const hardcoded = typeof product.stars === "number" ? product.stars : null;
+const stars =
+  typeof liveStars === "number"
+    ? hardcoded === null
+      ? liveStars
+      : Math.max(hardcoded, liveStars)
+    : hardcoded;
 ---
 
-<a
-  href={product.url}
-  target="_blank"
-  rel="noopener noreferrer"
-  aria-label={t.projects.cardAria(product.name)}
-  class="card card-interactive group relative flex flex-col p-5 h-full focus:outline-none focus-visible:outline-[color:var(--color-accent-bright)]"
+<article
+  class="card card-interactive group relative flex flex-col p-5 h-full"
 >
+  <a
+    href={product.url}
+    target="_blank"
+    rel="noopener noreferrer"
+    aria-label={t.projects.cardAria(product.name)}
+    class="card-link-overlay"
+  ></a>
+
   <div class="flex items-start justify-between gap-3">
     <div class="min-w-0 flex-1">
       <div class="flex items-center gap-2 text-[11px] font-mono text-[color:var(--color-fg-subtle)]">
@@ -40,9 +53,18 @@ const pitch = product.pitch[lang];
         {product.name}
       </h3>
     </div>
-    <span class="shrink-0 inline-flex items-center justify-center w-7 h-7 rounded-md border border-transparent text-[color:var(--color-fg-subtle)] group-hover:text-[color:var(--color-fg)] group-hover:border-[color:var(--color-border)] transition-colors">
-      <Icon name="arrow-up-right" size={14} />
-    </span>
+    <a
+      href={product.url}
+      target="_blank"
+      rel="noopener noreferrer"
+      aria-label={t.projects.starAria(product.name, stars)}
+      class="card-action card-action--star shrink-0"
+      data-card-action
+    >
+      <Icon name="star" size={11} />
+      <span>{t.projects.starLabel}</span>
+      {stars !== null && <span class="card-action-count">{stars}</span>}
+    </a>
   </div>
 
   <p class="mt-3 text-[14px] leading-relaxed text-[color:var(--color-fg-muted)] text-pretty line-clamp-4">
@@ -62,11 +84,8 @@ const pitch = product.pitch[lang];
       </span>
     )}
 
-    {typeof product.stars === "number" && (
-      <span class="inline-flex items-center gap-1 text-[12px] text-[color:var(--color-fg-muted)] font-mono tabular-nums">
-        <Icon name="star" size={12} class="text-[color:var(--color-star)]" />
-        {product.stars}
-      </span>
-    )}
+    <span class="inline-flex items-center justify-center w-7 h-7 rounded-md border border-transparent text-[color:var(--color-fg-subtle)] group-hover:text-[color:var(--color-fg)] group-hover:border-[color:var(--color-border)] transition-colors" aria-hidden="true">
+      <Icon name="arrow-up-right" size={14} />
+    </span>
   </div>
-</a>
+</article>

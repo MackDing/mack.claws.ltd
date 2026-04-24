@@ -1,12 +1,15 @@
 ---
 import Icon from "./Icon.astro";
+import { i18n, type Lang } from "../data/i18n";
 import type { Product } from "../data/products";
 
 type Props = {
   product: Product;
+  lang?: Lang;
 };
 
-const { product } = Astro.props;
+const { product, lang = "en" } = Astro.props;
+const t = i18n[lang];
 
 const langColorVar: Record<string, string> = {
   TypeScript: "var(--color-lang-ts)",
@@ -17,14 +20,15 @@ const langColorVar: Record<string, string> = {
 };
 
 const langDot = product.language ? langColorVar[product.language] : null;
-const [owner, repoName] = product.repo.split("/");
+const [owner] = product.repo.split("/");
+const pitch = product.pitch[lang];
 ---
 
 <a
   href={product.url}
   target="_blank"
   rel="noopener noreferrer"
-  aria-label={`${product.name} on GitHub (opens in new tab)`}
+  aria-label={t.projects.cardAria(product.name)}
   class="card card-interactive group relative flex flex-col p-5 h-full focus:outline-none focus-visible:outline-[color:var(--color-accent-bright)]"
 >
   <div class="flex items-start justify-between gap-3">
@@ -42,14 +46,8 @@ const [owner, repoName] = product.repo.split("/");
   </div>
 
   <p class="mt-3 text-[14px] leading-relaxed text-[color:var(--color-fg-muted)] text-pretty line-clamp-4">
-    {product.pitch}
+    {pitch}
   </p>
-
-  {product.pitchZh && (
-    <p class="mt-1.5 text-[12px] leading-relaxed text-[color:var(--color-fg-subtle)] line-clamp-2">
-      {product.pitchZh}
-    </p>
-  )}
 
   <div class="mt-auto pt-4 flex items-center justify-between gap-3">
     {product.language ? (
@@ -60,7 +58,7 @@ const [owner, repoName] = product.repo.split("/");
     ) : (
       <span class="chip text-[color:var(--color-fg-subtle)]">
         <span class="chip-dot bg-[color:var(--color-fg-subtle)]"></span>
-        <span>docs</span>
+        <span>{t.projects.docsChip}</span>
       </span>
     )}
 

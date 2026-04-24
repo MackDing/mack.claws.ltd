@@ -1,5 +1,11 @@
 ---
 import Icon from "./Icon.astro";
+import LangToggle from "./LangToggle.astro";
+import { i18n, type Lang } from "../data/i18n";
+
+type Props = { lang?: Lang };
+const { lang = "en" } = Astro.props;
+const t = i18n[lang];
 ---
 
 <section class="relative overflow-hidden bg-gradient-hero">
@@ -14,20 +20,25 @@ import Icon from "./Icon.astro";
     </svg>
   </div>
 
+  <div class="hero-edge-bleed hero-edge-bleed--left" aria-hidden="true"></div>
+  <div class="hero-edge-bleed hero-edge-bleed--right" aria-hidden="true"></div>
+
   <div class="container-page pt-28 pb-24 md:pt-36 md:pb-32 relative">
-    <nav class="absolute top-6 inset-x-0 container-page flex items-center justify-between" aria-label="Primary">
-      <a href="/" class="font-display text-[15px] font-semibold tracking-tight text-[color:var(--color-fg)]">
+    <nav class="absolute top-6 inset-x-0 container-page flex items-center justify-between gap-3" aria-label="Primary">
+      <a href={lang === "zh" ? "/zh/" : "/"} class="font-display text-[15px] font-semibold tracking-tight text-[color:var(--color-fg)]">
         mack<span class="text-[color:var(--color-accent-bright)]">.dev</span>
       </a>
       <div class="flex items-center gap-1 text-sm">
-        <a href="#projects" class="hidden sm:inline-flex px-3 py-1.5 rounded-md text-[color:var(--color-fg-muted)] hover:text-[color:var(--color-fg)] transition-colors">Projects</a>
-        <a href="#upstream" class="hidden sm:inline-flex px-3 py-1.5 rounded-md text-[color:var(--color-fg-muted)] hover:text-[color:var(--color-fg)] transition-colors">Contributions</a>
-        <a href="#contact" class="hidden sm:inline-flex px-3 py-1.5 rounded-md text-[color:var(--color-fg-muted)] hover:text-[color:var(--color-fg)] transition-colors">Contact</a>
+        <a href="#projects" class="hidden sm:inline-flex px-3 py-1.5 rounded-md text-[color:var(--color-fg-muted)] hover:text-[color:var(--color-fg)] transition-colors">{t.nav.projects}</a>
+        <a href="#upstream" class="hidden sm:inline-flex px-3 py-1.5 rounded-md text-[color:var(--color-fg-muted)] hover:text-[color:var(--color-fg)] transition-colors">{t.nav.contributions}</a>
+        <a href="#contact" class="hidden sm:inline-flex px-3 py-1.5 rounded-md text-[color:var(--color-fg-muted)] hover:text-[color:var(--color-fg)] transition-colors">{t.nav.contact}</a>
+        <span class="hidden sm:inline-block w-px h-4 bg-[color:var(--color-border)] mx-1.5" aria-hidden="true"></span>
+        <LangToggle lang={lang} />
         <a
           href="https://github.com/MackDing"
           target="_blank"
           rel="noopener noreferrer"
-          aria-label="GitHub profile"
+          aria-label={t.nav.githubAria}
           class="inline-flex items-center justify-center w-9 h-9 rounded-md text-[color:var(--color-fg-muted)] hover:text-[color:var(--color-fg)] hover:bg-[color:var(--color-surface-hover)] transition-colors ml-1"
         >
           <Icon name="github" size={16} />
@@ -41,23 +52,22 @@ import Icon from "./Icon.astro";
           <span class="absolute inline-flex h-full w-full rounded-full bg-[color:var(--color-accent-bright)] opacity-75 animate-ping"></span>
           <span class="relative inline-flex rounded-full h-1.5 w-1.5 bg-[color:var(--color-accent-bright)]"></span>
         </span>
-        <span class="font-mono tracking-wide">Building in Shanghai</span>
+        <span class="font-mono tracking-wide">{t.hero.badge}</span>
       </div>
 
       <h1 class="reveal reveal-2 mt-6 font-display font-semibold text-[44px] leading-[1.05] tracking-[-0.03em] text-[color:var(--color-fg)] md:text-[72px] text-balance">
-        Hi, I&rsquo;m Mack.<br />
-        <span class="text-[color:var(--color-fg-muted)]">I build small, honest tools</span>
+        {t.hero.titleLine1}<br />
+        <span class="text-[color:var(--color-fg-muted)]">{t.hero.titleLine2}</span>
         <span class="block text-[color:var(--color-fg-muted)]">
-          for
-          <span class="text-[color:var(--color-fg)] whitespace-nowrap">AI agents</span>
-          and
-          <span class="text-[color:var(--color-fg)] whitespace-nowrap">developers</span>.
+          {t.hero.titleLine3a}
+          <span class="text-[color:var(--color-fg)] whitespace-nowrap">{t.hero.titleLine3b}</span>
+          {t.hero.titleLine3c}
+          <span class="text-[color:var(--color-fg)] whitespace-nowrap">{t.hero.titleLine3d}</span>.
         </span>
       </h1>
 
       <p class="reveal reveal-3 mt-7 max-w-xl text-[17px] leading-relaxed text-[color:var(--color-fg-muted)] text-pretty">
-        Programmer based in Shanghai. Mostly open source, mostly around LLM gateways, agent tooling,
-        and the long-running developer loop. This is the index.
+        {t.hero.sub}
       </p>
 
       <div class="reveal reveal-4 mt-9 flex flex-wrap items-center gap-3">
@@ -68,7 +78,7 @@ import Icon from "./Icon.astro";
           class="btn btn-primary"
         >
           <Icon name="github" size={16} />
-          My GitHub
+          {t.hero.ctaGithub}
           <Icon name="arrow-up-right" size={14} />
         </a>
         <a
@@ -78,7 +88,7 @@ import Icon from "./Icon.astro";
           class="btn btn-ghost"
         >
           <Icon name="telegram" size={16} />
-          Say hi
+          {t.hero.ctaHi}
         </a>
       </div>
 
@@ -86,9 +96,9 @@ import Icon from "./Icon.astro";
         href="#projects"
         id="scroll-hint"
         class="scroll-hint mt-10 inline-flex flex-col items-center gap-1.5 text-[11px] font-mono uppercase tracking-[0.12em] text-[color:var(--color-fg-subtle)] hover:text-[color:var(--color-fg-muted)] transition-colors"
-        aria-label="Scroll to projects"
+        aria-label={t.hero.scrollAria}
       >
-        <span>Scroll</span>
+        <span>{t.hero.scroll}</span>
         <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
           <path d="m6 9 6 6 6-6" />
         </svg>

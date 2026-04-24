@@ -1,7 +1,7 @@
 # Mack's Portal — Build Brief
 
 ## Who this is for
-Hi, I'm **Mack Ding** (GitHub: `@MackDing`). I'm a programmer based in Shanghai. I build open-source tools mostly around AI agents, LLM gateways, and developer productivity. This landing page is my personal product portal — think of it like Pieter Levels's `https://levels.io`: one page that shows all my products clearly so people can explore, pick, star, and use them.
+Hi, I'm **Mack Ding** (GitHub: `@MackDing`). I'm a programmer based in Shenzhen. I build open-source tools mostly around AI agents, LLM gateways, and developer productivity. This landing page is my personal product portal — think of it like Pieter Levels's `https://levels.io`: one page that shows all my products clearly so people can explore, pick, star, and use them.
 
 ## Goal
 Build **one polished, fast, beautiful static landing page** for `https://mack.dev` (or similar, domain TBD) that:

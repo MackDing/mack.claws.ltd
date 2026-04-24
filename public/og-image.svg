@@ -4,13 +4,21 @@
       <stop offset="0" stop-color="#0A0C12"/>
       <stop offset="1" stop-color="#07080B"/>
     </linearGradient>
-    <radialGradient id="glow1" cx="0.25" cy="0.2" r="0.6">
-      <stop offset="0" stop-color="#5E6AD2" stop-opacity="0.35"/>
+    <radialGradient id="glow1" cx="0.5" cy="-0.05" r="0.85">
+      <stop offset="0" stop-color="#5E6AD2" stop-opacity="0.55"/>
       <stop offset="1" stop-color="#5E6AD2" stop-opacity="0"/>
     </radialGradient>
-    <radialGradient id="glow2" cx="0.85" cy="0.15" r="0.45">
-      <stop offset="0" stop-color="#7C85E1" stop-opacity="0.22"/>
+    <radialGradient id="glow2" cx="0.82" cy="0.1" r="0.4">
+      <stop offset="0" stop-color="#7C85E1" stop-opacity="0.38"/>
       <stop offset="1" stop-color="#7C85E1" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="bleedL" cx="0" cy="0.5" r="0.55">
+      <stop offset="0" stop-color="#4DB2E2" stop-opacity="0.18"/>
+      <stop offset="1" stop-color="#4DB2E2" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="bleedR" cx="1" cy="0.5" r="0.55">
+      <stop offset="0" stop-color="#A36BE0" stop-opacity="0.18"/>
+      <stop offset="1" stop-color="#A36BE0" stop-opacity="0"/>
     </radialGradient>
     <linearGradient id="mark" x1="0" y1="0" x2="1" y2="1">
       <stop offset="0" stop-color="#7C85E1"/>
@@ -23,6 +31,8 @@
 
   <rect width="1200" height="630" fill="url(#bg)"/>
   <rect width="1200" height="630" fill="url(#grid)" opacity="0.05"/>
+  <rect width="1200" height="630" fill="url(#bleedL)"/>
+  <rect width="1200" height="630" fill="url(#bleedR)"/>
   <rect width="1200" height="630" fill="url(#glow1)"/>
   <rect width="1200" height="630" fill="url(#glow2)"/>
 
@@ -49,7 +59,7 @@
   </g>
 
   <g font-family="'JetBrains Mono', 'DejaVu Sans Mono', monospace" fill="#9A9EA6" font-size="16" font-weight="500" letter-spacing="1.4">
-    <text x="88" y="548">OPEN SOURCE · SHANGHAI · @MACKDING</text>
+    <text x="88" y="548">OPEN SOURCE · SHENZHEN · @MACKDING</text>
   </g>
 
   <g transform="translate(88 568)">

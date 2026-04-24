@@ -1,47 +1,73 @@
 ---
 import "../styles/global.css";
+import { i18n, type Lang } from "../data/i18n";
 
 type Props = {
+  lang?: Lang;
   title?: string;
   description?: string;
 };
 
-const {
-  title = "Mack Ding — open-source tools for AI agents, LLM gateways, and dev productivity",
-  description = "Mack Ding is a programmer in Shanghai. I build small, focused open-source tools around AI agents, LLM gateways, and developer productivity.",
-} = Astro.props;
+const { lang = "en", title, description } = Astro.props;
+const t = i18n[lang];
+const metaTitle = title ?? t.meta.title;
+const metaDescription = description ?? t.meta.description;
 
 const site = "https://mack.claws.ltd";
 const canonical = new URL(Astro.url.pathname, site).href;
+const enUrl = new URL("/", site).href;
+const zhUrl = new URL("/zh/", site).href;
 const ogImage = new URL("/og-image.png", site).href;
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang={t.htmlLang}>
   <head>
     <meta charset="UTF-8" />
+    <script is:inline>
+      (function () {
+        try {
+          var KEY = "mack-portal-lang";
+          var path = window.location.pathname;
+          var isZh = path === "/zh/" || path === "/zh" || path.indexOf("/zh/") === 0;
+          var stored = null;
+          try { stored = localStorage.getItem(KEY); } catch (e) {}
+          if (stored === null) {
+            var nav = ((navigator.language || navigator.userLanguage || "") + "").toLowerCase();
+            if (nav.indexOf("zh") === 0 && !isZh) {
+              try { localStorage.setItem(KEY, "zh"); } catch (e) {}
+              window.location.replace("/zh/");
+              return;
+            }
+          }
+          try { localStorage.setItem(KEY, isZh ? "zh" : "en"); } catch (e) {}
+        } catch (e) {}
+      })();
+    </script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
     <meta name="color-scheme" content="dark" />
     <meta name="theme-color" content="#07080B" />
     <meta name="generator" content={Astro.generator} />
 
-    <title>{title}</title>
-    <meta name="description" content={description} />
+    <title>{metaTitle}</title>
+    <meta name="description" content={metaDescription} />
     <meta name="author" content="Mack Ding" />
 
     <meta property="og:site_name" content="mack.dev" />
-    <meta property="og:title" content={title} />
-    <meta property="og:description" content={description} />
+    <meta property="og:title" content={metaTitle} />
+    <meta property="og:description" content={metaDescription} />
     <meta property="og:type" content="website" />
     <meta property="og:url" content={canonical} />
+    <meta property="og:locale" content={lang === "zh" ? "zh_CN" : "en_US"} />
+    <meta property="og:locale:alternate" content={lang === "zh" ? "en_US" : "zh_CN"} />
     <meta property="og:image" content={ogImage} />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
     <meta property="og:image:alt" content="mack.dev — Mack Ding: small, honest tools for AI agents and developers." />
 
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content={title} />
-    <meta name="twitter:description" content={description} />
+    <meta name="twitter:title" content={metaTitle} />
+    <meta name="twitter:description" content={metaDescription} />
     <meta name="twitter:image" content={ogImage} />
     <meta name="twitter:image:alt" content="mack.dev — Mack Ding: small, honest tools for AI agents and developers." />
     <meta name="twitter:creator" content="@MackClaws" />
@@ -50,6 +76,9 @@ const ogImage = new URL("/og-image.png", site).href;
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
     <link rel="apple-touch-icon" sizes="180x180" href="/favicon-180.png" />
     <link rel="canonical" href={canonical} />
+    <link rel="alternate" hreflang="en" href={enUrl} />
+    <link rel="alternate" hreflang="zh-Hans" href={zhUrl} />
+    <link rel="alternate" hreflang="x-default" href={enUrl} />
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -63,7 +92,7 @@ const ogImage = new URL("/og-image.png", site).href;
       href="#main"
       class="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-50 focus:btn focus:btn-primary"
     >
-      Skip to content
+      {t.skip}
     </a>
     <slot />
   </body>

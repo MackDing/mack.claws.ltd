@@ -1,5 +1,10 @@
 ---
 import Icon from "./Icon.astro";
+import { i18n, type Lang } from "../data/i18n";
+
+type Props = { lang?: Lang };
+const { lang = "en" } = Astro.props;
+const t = i18n[lang];
 
 const contributions = [
   {
@@ -7,9 +12,9 @@ const contributions = [
     title: "feat(onboard): add custom/local API configuration flow",
     prNumber: 11106,
     url: "https://github.com/openclaw/openclaw/pull/11106",
-    status: "In review",
-    summary:
-      "Added a Custom / Local API onboarding flow to OpenClaw (Ollama, vLLM, LocalAI, any OpenAI-compatible endpoint). Auto-discovers models from /models, falls back to manual entry, and verifies connectivity before saving.",
+    status: t.upstream.statusMerged,
+    mergedLine: t.upstream.mergedLine,
+    summary: t.upstream.prSummary,
   },
 ];
 ---
@@ -17,12 +22,12 @@ const contributions = [
 <section id="upstream" class="relative py-20 md:py-24 scroll-mt-20">
   <div class="container-page">
     <div class="max-w-2xl">
-      <span class="section-eyebrow"><span class="chip-dot bg-[color:var(--color-accent-bright)]"></span>Upstream contributions</span>
+      <span class="section-eyebrow"><span class="chip-dot bg-[color:var(--color-accent-bright)]"></span>{t.upstream.eyebrow}</span>
       <h2 class="section-title mt-4 text-3xl md:text-4xl text-balance">
-        Patches I&rsquo;m sending upstream.
+        {t.upstream.title}
       </h2>
       <p class="mt-4 text-[color:var(--color-fg-muted)] text-pretty leading-relaxed">
-        Work landing outside my own repos. Small list on purpose &mdash; I try to do each one well.
+        {t.upstream.body}
       </p>
     </div>
 
@@ -33,18 +38,22 @@ const contributions = [
             href={c.url}
             target="_blank"
             rel="noopener noreferrer"
-            aria-label={`${c.project} PR #${c.prNumber} (opens in new tab)`}
+            aria-label={t.upstream.cardAria(c.project, c.prNumber)}
             class="card card-interactive group relative flex flex-col p-6 h-full focus:outline-none focus-visible:outline-[color:var(--color-accent-bright)]"
           >
             <div class="flex items-center justify-between gap-3">
-              <div class="flex items-center gap-2">
+              <div class="flex items-center gap-2 flex-wrap">
                 <span class="chip">
                   <span class="chip-dot bg-[color:var(--color-accent-bright)]"></span>
                   <span class="text-[color:var(--color-fg)]">{c.project}</span>
                 </span>
-                <span class="chip text-[color:var(--color-fg-muted)]">
-                  <span class="chip-dot bg-[color:var(--color-star)]"></span>
-                  {c.status}
+                <span class="chip chip-merged">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.25" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <circle cx="18" cy="18" r="3" />
+                    <circle cx="6" cy="6" r="3" />
+                    <path d="M6 21V9a9 9 0 0 0 9 9" />
+                  </svg>
+                  <span>{c.status}</span>
                 </span>
               </div>
               <span class="shrink-0 inline-flex items-center justify-center w-7 h-7 rounded-md text-[color:var(--color-fg-subtle)] group-hover:text-[color:var(--color-fg)] transition-colors">
@@ -61,7 +70,7 @@ const contributions = [
                   {c.title}
                 </h3>
                 <p class="mt-1 font-mono text-[12px] text-[color:var(--color-fg-subtle)]">
-                  {c.project.toLowerCase()}#{c.prNumber}
+                  {c.project.toLowerCase()}#{c.prNumber} &middot; {c.mergedLine}
                 </p>
               </div>
             </div>
@@ -75,7 +84,7 @@ const contributions = [
 
       <li class="hidden md:flex card border-dashed items-center justify-center p-6 min-h-[200px] text-center">
         <p class="text-sm text-[color:var(--color-fg-subtle)] leading-relaxed max-w-[200px]">
-          More upstream work lands here soon.
+          {t.upstream.placeholder}
         </p>
       </li>
     </ul>

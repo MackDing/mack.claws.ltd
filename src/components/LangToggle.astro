@@ -1,0 +1,25 @@
+---
+import { i18n, type Lang } from "../data/i18n";
+
+type Props = { lang: Lang };
+
+const { lang } = Astro.props;
+const t = i18n[lang].langToggle;
+---
+
+<div role="group" aria-label={t.ariaLabel} class="lang-toggle">
+  <a
+    href="/"
+    aria-label={t.ariaEn}
+    aria-current={lang === "en" ? "true" : undefined}
+    class:list={["lang-item", lang === "en" && "is-active"]}
+  >{t.en}</a>
+  <span class="lang-sep" aria-hidden="true">/</span>
+  <a
+    href="/zh/"
+    lang="zh-Hans"
+    aria-label={t.ariaZh}
+    aria-current={lang === "zh" ? "true" : undefined}
+    class:list={["lang-item", lang === "zh" && "is-active"]}
+  >{t.zh}</a>
+</div>

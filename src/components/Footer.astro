@@ -1,6 +1,10 @@
 ---
 import Icon from "./Icon.astro";
+import { i18n, type Lang } from "../data/i18n";
 
+type Props = { lang?: Lang };
+const { lang = "en" } = Astro.props;
+const t = i18n[lang].footer;
 const year = new Date().getFullYear();
 
 const socials = [
@@ -16,18 +20,17 @@ const socials = [
   <div class="container-page py-16 md:py-20">
     <div class="grid gap-10 md:grid-cols-[1.4fr_1fr_1fr]">
       <div class="max-w-sm">
-        <a href="/" class="font-display text-base font-semibold tracking-tight text-[color:var(--color-fg)]">
+        <a href={lang === "zh" ? "/zh/" : "/"} class="font-display text-base font-semibold tracking-tight text-[color:var(--color-fg)]">
           mack<span class="text-[color:var(--color-accent-bright)]">.dev</span>
         </a>
         <p class="mt-4 text-sm leading-relaxed text-[color:var(--color-fg-muted)] text-pretty">
-          Built in Shanghai. If you&rsquo;re running any of these and something breaks, the best path is
-          a GitHub issue &mdash; I read every one.
+          {t.tagline}
         </p>
       </div>
 
       <div>
         <h4 class="font-mono text-[11px] uppercase tracking-[0.08em] text-[color:var(--color-fg-subtle)]">
-          Elsewhere
+          {t.elsewhere}
         </h4>
         <ul class="mt-4 space-y-3">
           {socials.map((s) => (
@@ -49,14 +52,14 @@ const socials = [
 
       <div>
         <h4 class="font-mono text-[11px] uppercase tracking-[0.08em] text-[color:var(--color-fg-subtle)]">
-          This site
+          {t.thisSite}
         </h4>
         <ul class="mt-4 space-y-3 text-sm text-[color:var(--color-fg-muted)]">
           <li>
-            <a href="#projects" class="hover:text-[color:var(--color-fg)] transition-colors">Projects</a>
+            <a href="#projects" class="hover:text-[color:var(--color-fg)] transition-colors">{t.links.projects}</a>
           </li>
           <li>
-            <a href="#upstream" class="hover:text-[color:var(--color-fg)] transition-colors">Upstream contributions</a>
+            <a href="#upstream" class="hover:text-[color:var(--color-fg)] transition-colors">{t.links.upstream}</a>
           </li>
           <li>
             <a
@@ -65,7 +68,7 @@ const socials = [
               rel="noopener noreferrer"
               class="hover:text-[color:var(--color-fg)] transition-colors"
             >
-              Source on GitHub
+              {t.links.source}
             </a>
           </li>
         </ul>
@@ -73,8 +76,8 @@ const socials = [
     </div>
 
     <div class="mt-14 pt-6 border-t border-[color:var(--color-border)] flex flex-wrap items-center justify-between gap-3 text-[12px] text-[color:var(--color-fg-subtle)] font-mono">
-      <span>&copy; {year} Mack Ding. All rights reserved.</span>
-      <span>Built with Astro &middot; Tailwind &middot; taste.</span>
+      <span>&copy; {year} Mack Ding. {t.rights}</span>
+      <span>{t.credits}</span>
     </div>
   </div>
 </footer>

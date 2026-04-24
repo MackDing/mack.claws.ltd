@@ -13,8 +13,18 @@ const contributions = [
     prNumber: 11106,
     url: "https://github.com/openclaw/openclaw/pull/11106",
     status: t.upstream.statusMerged,
-    mergedLine: t.upstream.mergedLine,
-    summary: t.upstream.prSummary,
+    mergedLine: t.upstream.openclaw.mergedLine,
+    summary: t.upstream.openclaw.summary,
+  },
+  {
+    project: "JackClawOS",
+    title:
+      "feat: gstack methodology fusion \u2014 7 AI team nodes with professional workflows",
+    prNumber: 12,
+    url: "https://github.com/DevJackKong/JackClawOS/pull/12",
+    status: t.upstream.statusMerged,
+    mergedLine: t.upstream.jackclaw.mergedLine,
+    summary: t.upstream.jackclaw.summary,
   },
 ];
 ---
@@ -81,12 +91,6 @@ const contributions = [
           </a>
         </li>
       ))}
-
-      <li class="hidden md:flex card border-dashed items-center justify-center p-6 min-h-[200px] text-center">
-        <p class="text-sm text-[color:var(--color-fg-subtle)] leading-relaxed max-w-[200px]">
-          {t.upstream.placeholder}
-        </p>
-      </li>
     </ul>
   </div>
 </section>

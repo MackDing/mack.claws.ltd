@@ -1,0 +1,20 @@
+{
+  "name": "mack-portal",
+  "type": "module",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Mack Ding's personal product portal — a curated index of open-source tools.",
+  "scripts": {
+    "dev": "astro dev",
+    "start": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro"
+  },
+  "dependencies": {
+    "astro": "^5.14.0",
+    "@tailwindcss/vite": "^4.1.11",
+    "tailwindcss": "^4.1.11"
+  },
+  "packageManager": "pnpm@10.33.2"
+}

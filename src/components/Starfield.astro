@@ -1,0 +1,130 @@
+---
+---
+<canvas id="starfield" class="starfield-canvas" aria-hidden="true" tabindex="-1"></canvas>
+
+<script is:inline>
+  (() => {
+    const canvas = document.getElementById("starfield");
+    if (!canvas || !canvas.getContext) return;
+    const ctx = canvas.getContext("2d");
+    if (!ctx) return;
+
+    const DPR = Math.min(window.devicePixelRatio || 1, 2);
+    const STAR_COUNT = 220;
+    const DRIFT_PX_PER_SEC = 2 / 60;
+    const WHITE = [255, 255, 255];
+    const INDIGO = [165, 180, 252];
+    const WARM = [253, 230, 138];
+
+    let W = 0, H = 0;
+    let stars = [];
+    let driftY = 0;
+    let lastTime = 0;
+    let rafId = 0;
+    let running = false;
+
+    const reduced = window.matchMedia("(prefers-reduced-motion: reduce)");
+
+    function resize() {
+      W = window.innerWidth;
+      H = window.innerHeight;
+      canvas.width = Math.floor(W * DPR);
+      canvas.height = Math.floor(H * DPR);
+      canvas.style.width = W + "px";
+      canvas.style.height = H + "px";
+      ctx.setTransform(DPR, 0, 0, DPR, 0, 0);
+    }
+
+    function seed() {
+      stars = [];
+      for (let i = 0; i < STAR_COUNT; i++) {
+        const r = Math.random();
+        const color = r < 0.85 ? WHITE : r < 0.95 ? INDIGO : WARM;
+        stars.push({
+          x: Math.random() * W,
+          y: Math.random() * H,
+          r: 0.5 + Math.pow(Math.random(), 2.6) * 1.1,
+          base: 0.4 + Math.random() * 0.4,
+          amp: 0.15 + Math.random() * 0.25,
+          period: 4000 + Math.random() * 4000,
+          phase: Math.random() * Math.PI * 2,
+          c: color,
+        });
+      }
+    }
+
+    function paintStatic() {
+      ctx.clearRect(0, 0, W, H);
+      for (let i = 0; i < stars.length; i++) {
+        const s = stars[i];
+        ctx.beginPath();
+        ctx.arc(s.x, s.y, s.r, 0, Math.PI * 2);
+        ctx.fillStyle = "rgba(" + s.c[0] + "," + s.c[1] + "," + s.c[2] + "," + s.base.toFixed(3) + ")";
+        ctx.fill();
+      }
+    }
+
+    function frame(now) {
+      if (!running) return;
+      const dt = now - lastTime;
+      lastTime = now;
+      driftY += DRIFT_PX_PER_SEC * (dt / 1000);
+
+      ctx.clearRect(0, 0, W, H);
+      const wrap = H + 20;
+      for (let i = 0; i < stars.length; i++) {
+        const s = stars[i];
+        const t = (2 * Math.PI * now) / s.period + s.phase;
+        const op = Math.max(0, Math.min(1, s.base + Math.sin(t) * s.amp));
+        let y = s.y + driftY;
+        y = ((y % wrap) + wrap) % wrap - 10;
+        ctx.beginPath();
+        ctx.arc(s.x, y, s.r, 0, Math.PI * 2);
+        ctx.fillStyle = "rgba(" + s.c[0] + "," + s.c[1] + "," + s.c[2] + "," + op.toFixed(3) + ")";
+        ctx.fill();
+      }
+      rafId = requestAnimationFrame(frame);
+    }
+
+    function stop() {
+      running = false;
+      if (rafId) cancelAnimationFrame(rafId);
+      rafId = 0;
+    }
+
+    function start() {
+      if (reduced.matches) {
+        stop();
+        paintStatic();
+        return;
+      }
+      if (running) return;
+      running = true;
+      lastTime = performance.now();
+      rafId = requestAnimationFrame(frame);
+    }
+
+    resize();
+    seed();
+    start();
+
+    let resizeTimer = 0;
+    window.addEventListener("resize", () => {
+      clearTimeout(resizeTimer);
+      resizeTimer = setTimeout(() => {
+        resize();
+        seed();
+        if (reduced.matches) paintStatic(); else start();
+      }, 120);
+    });
+
+    document.addEventListener("visibilitychange", () => {
+      if (document.visibilityState === "hidden") stop();
+      else start();
+    });
+
+    const onReducedChange = () => { stop(); start(); };
+    if (reduced.addEventListener) reduced.addEventListener("change", onReducedChange);
+    else if (reduced.addListener) reduced.addListener(onReducedChange);
+  })();
+</script>

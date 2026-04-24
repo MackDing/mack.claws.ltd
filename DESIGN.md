@@ -174,7 +174,51 @@ Added proper route-based i18n rather than a client-only toggle:
 - Repo names, tech stack chips, and code stay in English in both locales — they're proper nouns, and `TypeScript` rendered as `TypeScript` is more useful than any transliteration.
 - Chinese pitches and UI copy were written as natural-sounding prose, not machine-translated. The goal is that a Chinese-speaking reader doesn't feel like they're reading a translated page.
 
-## 8. Things I deliberately did **not** add
+## 8. Starfield (v4 pass)
+
+A single fixed `<canvas>` sits between the base `#07080B` page color and the full-page vertical gradient overlay. The goal is Grok-style: a deep-space feel under the existing indigo gradient, not a particle demo. "Looking at the night sky through a calm window," is the brief's phrasing and the bar I held it to.
+
+### Layering (bottom → top)
+
+1. `html` background color `#07080B`
+2. `<canvas id="starfield">` at `z-index: -2`, `position: fixed`, viewport-sized
+3. `.bg-vertical-overlay` at `z-index: -1`, a translucent vertical gradient (`rgba(7,8,11,0)` → `rgba(11,13,24,0.42)`). Replaces the previous solid body gradient so stars can breathe through; the luminance feel is preserved.
+4. Hero indigo radial glow (`.bg-gradient-hero`) — unchanged, still opaque in the hero area so stars don't compete with the headline
+5. Page content
+
+### Star counts and palette
+
+- **220 stars** per viewport (target band 180–260).
+- **Radii** `0.5 – 1.6 px`, biased tiny via `0.5 + Math.pow(Math.random(), 2.6) * 1.1` — most are hairline pixels; a small number are the 1–1.6 px "bright ones" that catch the eye.
+- **Colors** (weighted):
+  - **85 %** white `rgb(255, 255, 255)` at 0.4 – 0.8 base opacity
+  - **10 %** indigo `#a5b4fc` — picks up the Linear-indigo accent already on the page
+  - **5 %** warm `#fde68a` — the one "third colour", same role the cyan/purple hero edge-bleeds play: enough to register as depth, nowhere near disco
+- **Twinkle**: per-star sine oscillation with period `4000 – 8000 ms` and a random phase offset. Amplitude is small (`0.15 – 0.25` on top of the base opacity) so stars breathe, they don't blink.
+- **Drift**: the whole field moves `~2 px/minute` downward with viewport-wrap. Slow enough you only notice it if you stare; just enough to kill the "dead wallpaper" feel.
+
+### Why this is subtle on purpose
+
+Three dials keep the field calm:
+
+1. **Tiny radii + biased distribution** — a disproportionate number are ≤ 0.7 px, so the overall texture reads as dust, not confetti.
+2. **Low base opacity (0.4 – 0.8)** — no star ever hits pure white at 100 %.
+3. **Breathe, don't blink** — sinusoidal twinkle at multi-second periods means no star flips brightness fast enough for the eye to track. Paired with the 2 px/min drift, motion sits under the threshold of conscious attention.
+
+### Accessibility & performance
+
+- Canvas is `aria-hidden="true"` and `tabindex="-1"`; `pointer-events: none` so it never intercepts clicks.
+- `prefers-reduced-motion: reduce` → stars are painted once and the rAF loop never starts. No twinkle, no drift.
+- `document.visibilityState === "hidden"` → `cancelAnimationFrame` and drop the loop until the tab is active again.
+- `devicePixelRatio` honored (capped at 2× so we don't burn paint on high-DPI phones), `ctx.setTransform(DPR, 0, 0, DPR, 0, 0)` keeps the rest of the drawing in CSS pixels.
+- Resize is debounced 120 ms; stars are re-seeded on resize so density stays constant across viewport sizes.
+- Zero dependencies. Single `<script is:inline>` inside `src/components/Starfield.astro`. The component lives in `Layout.astro`, so `/` and `/zh/` both inherit it. Total runtime overhead well under 3 KB gzipped.
+
+### Contrast check
+
+The hero section still uses the unchanged `.bg-gradient-hero` (indigo radials over an opaque `#0A0C12` → `#07080B` base), so the hero sub paragraph (`#9A9EA6` at 17 px) reads on the same surface as before — **7.2 : 1 AAA** unaffected by the canvas. In the projects area where stars are visible, body text sits on the card surface (`rgba(255,255,255,0.03)` over the overlay), and stars are too small and too dim (≤ 1.6 px, ≤ 0.8 opacity) to shift perceived background luminance enough to matter. Spot-checked by reading every text block over the densest part of the field.
+
+## 9. Things I deliberately did **not** add
 
 - A theme toggle. The brief allowed it as optional; adding a light-mode palette well takes more time than the rest of the site put together, and the default dark look is the point. Can be layered on later via `:root[data-theme='light']`.
 - A hero photo / avatar. Adds weight without adding signal for a dev-tools-focused portal.

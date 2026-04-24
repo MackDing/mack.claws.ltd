@@ -1,0 +1,43 @@
+Follow-up iteration pass. Read BRIEF.md, DESIGN.md, and the current src/ and dist/. Make these changes in ONE cohesive pass.
+
+==== 1. LOCATION FIX ====
+Every mention of Shanghai must become Shenzhen. Known spots:
+- src/layouts/Layout.astro around line 11 (description meta)
+- src/components/Hero.astro around line 44 (Building in Shanghai badge)
+- src/components/Hero.astro around lines 59-60 (paragraph)
+- src/components/Footer.astro around line 23
+Also grep the whole project for any other Shanghai and replace with Shenzhen. Update the OG image SVG/PNG if it contained the city name too.
+
+==== 2. STRONGER GRADIENT ====
+Make the dark indigo theme feel more cinematic:
+- Hero: the top indigo glow should be roughly 2x more visible (increase the radial-gradient opacity, widen the spread, add a second smaller hotspot off-center).
+- Introduce a subtle full-page vertical gradient from #07080B at the top to something slightly lifted like #0B0D18 at the bottom, so scrolling feels like moving through a space.
+- Add a very subtle cyan or purple secondary tint on the left and right edges of the hero only, like a third accent color bleeding in. Keep it elegant, not disco.
+- Do NOT break existing cards or readability. Cards keep their current backdrop.
+- Respect prefers-reduced-motion and keep WCAG AA contrast (4.5:1 or better) for body text.
+- Update DESIGN.md to describe the stronger gradient choices.
+
+==== 3. i18n ROUTE-BASED ====
+Add Chinese translations using Astro route-based i18n:
+- "/" stays English default.
+- "/zh/" serves the Chinese version of the full page.
+- Add a small EN / 中 toggle in the top-right of both pages. Active language subtly highlighted.
+- On first visit only: check navigator.language for zh-* and redirect to /zh/ via a tiny inline script in the head. Remember the choice in localStorage as "mack-portal-lang". If the user already visited, never auto-redirect again.
+- Translate ALL user-facing copy: hero headline + sub + badge + CTAs, what-i-build paragraph, project category labels, each project one-liner with a natural-sounding 中文 version instead of stiff machine translation, upstream contributions section, footer.
+- Keep repo names, code, and tech chips in English. Do not translate TypeScript or Go into Chinese characters.
+- Use a single data source like src/data/projects.ts with fields en and zh rather than duplicating components. That keeps future edits sane.
+- Add hreflang link tags for en and zh in the head.
+
+==== 4. PR STATUS FIX ====
+The card for OpenClaw PR #11106 currently says "In review". That is wrong.
+The real state is state=closed, merged=true, merged_at=2026-02-10.
+Change the badge to "Merged" with GitHub merged purple (background #8250DF, white text). Update any accompanying text to say something like "Merged Feb 10, 2026" and remove any awaiting-review wording. In Chinese, use 已合并.
+
+==== QUALITY BAR ====
+- Respect prefers-reduced-motion and WCAG AA.
+- Run pnpm build at the end and verify a clean build.
+- Keep bundle lean. Inline tiny JS where reasonable instead of shipping a whole island for a 6-line language toggle.
+- Do NOT touch unrelated files.
+- Commit as ONE commit with the message: feat(i18n + polish v2): zh locale, Shenzhen, stronger gradient, PR merged badge.
+
+When fully done, run: openclaw system event --text "Done: v2 polish complete, pnpm build verified" --mode now

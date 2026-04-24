@@ -1,0 +1,45 @@
+v5 iteration. Read BRIEF.md, DESIGN.md, src and current components. Do ONE focused pass.
+
+GOAL: GitHub engagement buttons (A + B hybrid).
+
+LAYER 1 hero-level CTAs (big, on-brand, custom):
+Replace or extend the current hero CTA row with these two buttons. Match the current design language: indigo primary, ghost secondary, same radius, same focus ring.
+
+1. Primary: Follow @MackDing
+   - Icon: simple github mark. Reuse Icon.astro if it supports github, otherwise inline SVG.
+   - Label EN: Follow @MackDing
+   - Label ZH: 关注 @MackDing
+   - Opens: https://github.com/MackDing in a new tab with rel noopener noreferrer.
+   - On the right of the label show live-ish follower count. Example: Follow @MackDing · 128. Skip the count if fetch failed.
+
+2. Secondary: Star my projects
+   - Label EN: Star my projects
+   - Label ZH: 给我的项目点 Star
+   - Opens: https://github.com/MackDing?tab=repositories in a new tab.
+
+Keep both existing hero CTAs if they already exist. If one is redundant (for example a plain My GitHub button) replace it. Only one follow concept total.
+
+Follower count approach:
+- Fetch at BUILD TIME using an Astro static data fetch. Call https://api.github.com/users/MackDing and pick followers and public_repos.
+- Cache the result in a tiny JSON file so dev mode is fast.
+- If the request fails during build (rate-limited or offline) fall back silently and render the button without the number.
+
+LAYER 2 per-card Star buttons:
+On each project card in the grid:
+- Add a small Star button at the top-right or bottom-right of the card. Tiny custom button with a star svg icon and the star count. Button text: Star then the count.
+- Clicking opens https://github.com/owner/repo in a new tab.
+- stopPropagation on the button click so it does NOT also trigger the whole-card click. The full card click still goes to the repo by default. The dedicated Star button is cleaner intent.
+- On the Upstream Contributions cards, replace or add alongside the merged badge a small button that says View PR and opens the PR URL. Do NOT add a Star button to PR cards.
+
+OPTIONAL CLEAN-UPS:
+- Refresh the star counts on each project card by calling GitHub API at build time (same cached JSON pattern). Only overwrite hardcoded counts when the API returns a higher, newer value. Keep the fallback to hardcoded if fetch fails.
+- If you already use GitHub API during build, also fetch each repo stargazers_count in one pass.
+
+QUALITY BAR:
+- Do NOT change palette, gradient, starfield, typography, layout.
+- Respect prefers-reduced-motion and WCAG AA.
+- Run pnpm build. Verify clean build.
+- i18n: keep all new strings in src/data/i18n.ts with en and zh fields so the /zh/ route gets translations.
+- Accessibility: buttons need aria-label and visible focus. Use anchor or button tag, not plain div.
+- Commit as ONE commit with message: feat(v5): GitHub follow and star engagement buttons (hero + per-card)
+- When completely finished run: openclaw system event --text "Done: v5 GitHub engagement live. Visit https://mack.claws.ltd and Cmd+Shift+R." --mode now

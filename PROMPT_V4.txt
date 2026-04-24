@@ -1,0 +1,43 @@
+Small visual iteration. Read BRIEF.md, DESIGN.md, and current src. Do ONE focused pass.
+
+GOAL: starfield background, Grok-style.
+The user wants the dark page background to feel like Grok starfield. Subtle deep-space vibe under the existing indigo gradient. Not a disco. Not a screensaver. Think: looking into the night sky through a calm window.
+
+Implementation rules:
+
+1. Add a global starfield behind everything (z-index minus 1) rendered via a single canvas element in the base Layout. Fixed to the viewport, full width and full height. The existing hero indigo gradient and the page vertical gradient both stay on top of it.
+
+2. Stars should be:
+   - About 180 to 260 small dots.
+   - Random sizes 0.5 to 1.6 px. Most tiny.
+   - Colors: mostly white at 40 to 80 percent opacity. About 10 to 15 percent tinted slightly indigo near #a5b4fc. About 5 percent tinted warm near #fde68a for depth.
+   - Twinkle: very slow opacity oscillation. Period 4 to 8 seconds, different per star. Breathing, not blinking.
+   - Extremely slow parallax drift, about 2 px per minute, so the field feels alive but not busy.
+
+3. Layering bottom to top:
+   - #07080B page background color
+   - starfield canvas
+   - full page vertical gradient overlay (existing)
+   - hero indigo radial glow (existing)
+   - content
+
+4. Respect prefers-reduced-motion. If reduced-motion is on, draw stars once, no twinkle, no drift, stop the animation loop.
+
+5. Respect devicePixelRatio so canvas stays crisp on retina.
+
+6. Pause the animation when the tab is hidden using document visibilityState.
+
+7. Zero dependencies. Pure vanilla JS. Either an inline script inside a small src components Starfield astro component, or a short ts file imported by that component. Keep bundle lean, well under 3 KB gzipped.
+
+8. Accessibility: canvas must have aria-hidden true. No pointer and no keyboard interaction.
+
+9. Works on both slash and slash zh slash. Put the component inside the shared Layout so both locales inherit it.
+
+10. Update DESIGN md. Add a short Starfield section describing the choice, star counts, colors, and why this is subtle on purpose.
+
+QUALITY BAR
+- Do NOT change palette, typography, layout, or the existing gradient or hero glow.
+- Respect WCAG AA for body text contrast. The starfield under the gradient must not hurt readability. Verify the hero sub paragraph still reads cleanly.
+- Run pnpm build. Verify clean build.
+- Commit as ONE commit with message: feat(v4): Grok-style subtle starfield background with twinkle and drift
+- When completely finished run: openclaw system event --text "Done: v4 starfield live. Visit https://mack.claws.ltd and Cmd+Shift+R." --mode now

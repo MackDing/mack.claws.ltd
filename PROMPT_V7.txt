@@ -1,0 +1,62 @@
+v7 iteration. Read BRIEF.md, DESIGN.md, and current src/.
+
+THREE things to do in ONE cohesive pass.
+
+==== 1. Add liveUrl field + buttons on project cards ====
+
+Extend the Product type in src/data/products.ts with an optional liveUrl (and optional liveLabel key for i18n) field. Only these two repos get one right now:
+
+- awesome-ai-api
+    liveUrl: https://mackding.github.io/awesome-ai-api/
+    liveLabel key: exploreList  (EN: Explore list, ZH: 浏览榜单)
+
+- opc-daily-signal
+    liveUrl: https://mackding.github.io/opc-daily-signal/
+    liveLabel key: dailySignals  (EN: Daily signals, ZH: 每日情报)
+
+Card UI change:
+- If the project has liveUrl, show a small pill button above the repo link with the localized label and an external-link arrow icon. Style: same shape as the existing Star button but a DIFFERENT color (use indigo primary to stand out from GitHub gray). Keep it compact.
+- stopPropagation on the button click (same pattern as the Star button) so clicking Live does NOT also trigger the whole-card click.
+- New tab, rel noopener noreferrer.
+- Put the localized strings in src/data/i18n.ts under a new namespace like ui.card.live with { en, zh }.
+
+==== 2. Add a MAIN PRODUCT banner for opc.ren ====
+
+opc.ren is Mack's main product and deserves prominence. Add a new section between the Hero and the Project Grid (or immediately under Hero, above What-I-Build). Rules:
+
+- Name the component src/components/MainProduct.astro.
+- Visual: wider than a regular card. Full row. Uses the indigo primary as an accent but stays on-theme (same palette, subtle gradient, rounded, same hairline border).
+- Content (EN):
+    Pre-title chip: MAIN PRODUCT
+    Title: OPC
+    Tagline: Token gas station + daily decision intelligence for one-person companies.
+    Description: Your one-person-company command center. AI signals, a token gateway, and an agent fleet — all in one place.
+    Two buttons:
+      Primary: Visit opc.ren →  (opens https://opc.ren in a new tab)
+      Secondary: Read daily signals →  (opens https://mackding.github.io/opc-daily-signal/)
+
+- Content (ZH):
+    Pre-title chip: 主产品
+    Title: OPC
+    Tagline: 一人公司的 Token 加油站 + 每日决策情报。
+    Description: 一人公司的指挥中心。AI 情报、Token 网关、Agent 舰队，全在一个地方。
+    Two buttons:
+      Primary: 打开 opc.ren →
+      Secondary: 读每日情报 →
+
+- All strings through src/data/i18n.ts so /zh/ route picks them up.
+- Subtle animation on hover / scroll (respect prefers-reduced-motion).
+
+==== 3. Keep opc-daily-signal card secondary ====
+
+Since opc-daily-signal now gets promoted in the Main Product banner (as the "Read daily signals" secondary CTA), KEEP its project card in the grid but make sure:
+- Its liveUrl button links to the Jekyll blog (mackding.github.io/opc-daily-signal/), not opc.ren.
+- The copy on the project card stays as-is (one-liner). No duplication with the banner text.
+
+==== QUALITY BAR ====
+- Do NOT change palette, starfield, hero, typography, or global gradient.
+- All new strings in src/data/i18n.ts with en and zh fields.
+- Respect WCAG AA and prefers-reduced-motion.
+- Run pnpm build. Verify clean build.
+- Commit as ONE commit with message: feat(v7): liveUrl cards, OPC main-product banner, opc-daily-signal link
+- When completely finished run: openclaw system event --text "Done: v7 live (OPC banner + liveUrl buttons + 2 Pages links). Visit https://mack.claws.ltd and Cmd+Shift+R." --mode now

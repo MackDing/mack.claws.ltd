@@ -1,0 +1,42 @@
+Small follow-up iteration. Read BRIEF.md, DESIGN.md, src/data/i18n.ts, and current components. Do ONE cohesive pass.
+
+==== 1. NEW IDENTITY: AI-native developer ====
+Mack's self-identity is now "AI-native developer" (NOT "programmer"). Update everywhere in src/data/i18n.ts and any component that hardcodes copy:
+
+- Hero headline stays as-is (Mack Ding). But the sub-badge and sub-paragraph must switch.
+- English badge: AI-native dev · Shenzhen
+- Chinese badge: AI-native · 深圳
+- English sub-paragraph (under hero):
+  AI-native developer in Shenzhen. Most of my work is open source — small, focused tools at the edge of AI agents, LLM gateways, and the long-running developer loop. Built alongside Claude Code, Codex, and a lot of curiosity.
+- Chinese sub-paragraph:
+  AI-native 开发者,在深圳. 开源为主 —— 专注在 AI Agent、LLM 网关、以及长跑的开发者工作流的边界上. 用 Claude Code、Codex 和一堆好奇心造出来.
+- Meta description (Layout.astro):
+  EN: Mack Ding — AI-native developer in Shenzhen. Open-source tools around AI agents, LLM gateways, and developer productivity.
+  ZH: Mack Ding — AI-native 开发者,在深圳. 专注 AI Agent、LLM 网关、开发者工作流的开源工具.
+- Footer tagline:
+  EN: Built in Shenzhen by an AI-native dev.
+  ZH: 深圳,AI-native 开发者自建.
+- Replace every lingering instance of Programmer or programmer referring to Mack with AI-native developer / AI-native 开发者.
+
+==== 2. NEW UPSTREAM CONTRIBUTION CARD ====
+Add a SECOND card below the existing OpenClaw PR card in the Upstream Contributions section. Same visual style.
+
+Data for the new card:
+- Repo: DevJackKong/JackClawOS
+- PR: #12
+- Title: feat: gstack methodology fusion — 7 AI team nodes with professional workflows
+- URL: https://github.com/DevJackKong/JackClawOS/pull/12
+- Status: Merged (GitHub merged purple #8250DF background, white text, same badge component as the OpenClaw card)
+- Merged date: Apr 11, 2026
+- EN one-liner: Expanded JackClawOS's AI team from 3 generic nodes to 7 methodology-driven nodes, each with a full gstack-inspired systemPrompt: role definition, philosophy, step-by-step workflow, structured output, and a completion status protocol.
+- ZH one-liner: 把 JackClawOS 的 AI 团队从 3 个通用节点扩展到 7 个有方法论的节点. 每个节点的 systemPrompt 包含完整的 gstack 风格工作流:角色定义、核心哲学、分步流程、结构化输出、完成状态协议.
+- Tag on card: JackClawOS
+
+Reuse the component / structure the OpenClaw card uses. Put new PR BELOW the OpenClaw one.
+
+==== QUALITY BAR ====
+- Do NOT change palette, gradient, layout, fonts, or animations.
+- Keep bundle lean. Respect prefers-reduced-motion and WCAG AA.
+- Run pnpm build. Verify clean build.
+- Commit as ONE commit with message: feat(v3): AI-native identity, add JackClawOS PR #12 merged card
+- When completely finished run: openclaw system event --text "Done: v3 live (AI-native identity + JackClawOS PR card), pnpm build verified. Visit https://mack.claws.ltd and Cmd+Shift+R." --mode now

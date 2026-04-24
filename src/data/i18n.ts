@@ -71,6 +71,28 @@ export const i18n = {
           ? `Star ${name} on GitHub (opens in new tab)`
           : `Star ${name} on GitHub, ${count} stars (opens in new tab)`,
     },
+    ui: {
+      card: {
+        live: {
+          exploreList: "Explore list",
+          dailySignals: "Daily signals",
+        },
+        liveAria: (label: string, name: string) =>
+          `${label} — open ${name} live site (opens in new tab)`,
+      },
+    },
+    mainProduct: {
+      chip: "MAIN PRODUCT",
+      title: "OPC",
+      tagline:
+        "Token gas station + daily decision intelligence for one-person companies.",
+      description:
+        "Your one-person-company command center. AI signals, a token gateway, and an agent fleet \u2014 all in one place.",
+      ctaPrimary: "Visit opc.ren",
+      ctaPrimaryAria: "Visit opc.ren (opens in new tab)",
+      ctaSecondary: "Read daily signals",
+      ctaSecondaryAria: "Read OPC daily signals (opens in new tab)",
+    },
     groups: {
       agents: {
         title: "Agents & LLM infra",
@@ -199,6 +221,28 @@ export const i18n = {
         count === null
           ? `\u5728 GitHub \u4E0A\u7ED9 ${name} \u70B9 Star\uFF08\u65B0\u6807\u7B7E\u9875\u6253\u5F00\uFF09`
           : `\u5728 GitHub \u4E0A\u7ED9 ${name} \u70B9 Star\uFF0C\u5F53\u524D ${count} \u661F\uFF08\u65B0\u6807\u7B7E\u9875\u6253\u5F00\uFF09`,
+    },
+    ui: {
+      card: {
+        live: {
+          exploreList: "\u6D4F\u89C8\u699C\u5355",
+          dailySignals: "\u6BCF\u65E5\u60C5\u62A5",
+        },
+        liveAria: (label: string, name: string) =>
+          `${label} \u2014 \u6253\u5F00 ${name} \u7EBF\u4E0A\u7248\u672C\uFF08\u65B0\u6807\u7B7E\u9875\u6253\u5F00\uFF09`,
+      },
+    },
+    mainProduct: {
+      chip: "\u4E3B\u4EA7\u54C1",
+      title: "OPC",
+      tagline:
+        "\u4E00\u4EBA\u516C\u53F8\u7684 Token \u52A0\u6CB9\u7AD9 + \u6BCF\u65E5\u51B3\u7B56\u60C5\u62A5\u3002",
+      description:
+        "\u4E00\u4EBA\u516C\u53F8\u7684\u6307\u6325\u4E2D\u5FC3\u3002AI \u60C5\u62A5\u3001Token \u7F51\u5173\u3001Agent \u8230\u961F\uFF0C\u5168\u5728\u4E00\u4E2A\u5730\u65B9\u3002",
+      ctaPrimary: "\u6253\u5F00 opc.ren",
+      ctaPrimaryAria: "\u6253\u5F00 opc.ren\uFF08\u65B0\u6807\u7B7E\u9875\u6253\u5F00\uFF09",
+      ctaSecondary: "\u8BFB\u6BCF\u65E5\u60C5\u62A5",
+      ctaSecondaryAria: "\u9605\u8BFB OPC \u6BCF\u65E5\u60C5\u62A5\uFF08\u65B0\u6807\u7B7E\u9875\u6253\u5F00\uFF09",
     },
     groups: {
       agents: {

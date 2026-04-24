@@ -1,0 +1,73 @@
+---
+import Icon from "./Icon.astro";
+import { i18n, type Lang } from "../data/i18n";
+
+type Props = { lang?: Lang };
+const { lang = "en" } = Astro.props;
+const t = i18n[lang].mainProduct;
+---
+
+<section class="relative pt-12 md:pt-16" aria-labelledby="main-product-title">
+  <div class="container-page">
+    <article class="main-product group relative overflow-hidden">
+      <div class="main-product-glow" aria-hidden="true"></div>
+      <div class="main-product-grid" aria-hidden="true"></div>
+
+      <div class="relative grid gap-10 md:grid-cols-[1.35fr_1fr] md:items-center p-7 md:p-10">
+        <div>
+          <span class="main-product-chip">
+            <span class="main-product-chip-dot" aria-hidden="true"></span>
+            <span>{t.chip}</span>
+          </span>
+
+          <h2
+            id="main-product-title"
+            class="mt-5 font-display font-semibold tracking-[-0.035em] text-[color:var(--color-fg)] text-[56px] md:text-[84px] leading-[0.9]"
+          >
+            {t.title}<span class="text-[color:var(--color-accent-bright)]">.ren</span>
+          </h2>
+
+          <p class="mt-5 text-[18px] md:text-[20px] leading-snug text-[color:var(--color-fg)] text-pretty font-medium max-w-xl">
+            {t.tagline}
+          </p>
+
+          <p class="mt-3 text-[15px] leading-relaxed text-[color:var(--color-fg-muted)] text-pretty max-w-xl">
+            {t.description}
+          </p>
+
+          <div class="mt-7 flex flex-wrap items-center gap-3">
+            <a
+              href="https://opc.ren"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label={t.ctaPrimaryAria}
+              class="btn btn-primary"
+            >
+              <span>{t.ctaPrimary}</span>
+              <Icon name="arrow-up-right" size={14} />
+            </a>
+            <a
+              href="https://mackding.github.io/opc-daily-signal/"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label={t.ctaSecondaryAria}
+              class="btn btn-ghost"
+            >
+              <span>{t.ctaSecondary}</span>
+              <Icon name="arrow-up-right" size={14} />
+            </a>
+          </div>
+        </div>
+
+        <div class="hidden md:flex justify-end items-center pr-2" aria-hidden="true">
+          <div class="main-product-orbit">
+            <span class="main-product-orbit-dot main-product-orbit-dot--1"></span>
+            <span class="main-product-orbit-dot main-product-orbit-dot--2"></span>
+            <span class="main-product-orbit-dot main-product-orbit-dot--3"></span>
+            <span class="main-product-orbit-label font-mono">opc.ren</span>
+          </div>
+        </div>
+      </div>
+    </article>
+  </div>
+</section>

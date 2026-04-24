@@ -31,6 +31,8 @@ const stars =
       ? liveStars
       : Math.max(hardcoded, liveStars)
     : hardcoded;
+
+const liveLabel = product.liveLabel ? t.ui.card.live[product.liveLabel] : null;
 ---
 
 <article
@@ -53,18 +55,33 @@ const stars =
         {product.name}
       </h3>
     </div>
-    <a
-      href={product.url}
-      target="_blank"
-      rel="noopener noreferrer"
-      aria-label={t.projects.starAria(product.name, stars)}
-      class="card-action card-action--star shrink-0"
-      data-card-action
-    >
-      <Icon name="star" size={11} />
-      <span>{t.projects.starLabel}</span>
-      {stars !== null && <span class="card-action-count">{stars}</span>}
-    </a>
+    <div class="flex items-center gap-1.5 shrink-0">
+      {product.liveUrl && liveLabel && (
+        <a
+          href={product.liveUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label={t.ui.card.liveAria(liveLabel, product.name)}
+          class="card-action card-action--live"
+          data-card-action
+        >
+          <span>{liveLabel}</span>
+          <Icon name="arrow-up-right" size={11} strokeWidth={2} />
+        </a>
+      )}
+      <a
+        href={product.url}
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label={t.projects.starAria(product.name, stars)}
+        class="card-action card-action--star"
+        data-card-action
+      >
+        <Icon name="star" size={11} />
+        <span>{t.projects.starLabel}</span>
+        {stars !== null && <span class="card-action-count">{stars}</span>}
+      </a>
+    </div>
   </div>
 
   <p class="mt-3 text-[14px] leading-relaxed text-[color:var(--color-fg-muted)] text-pretty line-clamp-4">

@@ -1,3 +1,5 @@
+export type LiveLabelKey = "exploreList" | "dailySignals";
+
 export type Product = {
   name: string;
   repo: string;
@@ -7,6 +9,8 @@ export type Product = {
   pitch: { en: string; zh: string };
   group: "agents" | "devtools" | "fun";
   featured?: boolean;
+  liveUrl?: string;
+  liveLabel?: LiveLabelKey;
 };
 
 export const products: Product[] = [
@@ -34,6 +38,8 @@ export const products: Product[] = [
       zh: "目前最大的开源 AI API 网关与中转榜单,每天探一次 /v1/models,中英双语。",
     },
     group: "agents",
+    liveUrl: "https://mackding.github.io/awesome-ai-api/",
+    liveLabel: "exploreList",
   },
   {
     name: "hermes-manager",
@@ -140,5 +146,7 @@ export const products: Product[] = [
       zh: "一人公司的每日决策情报 —— AI 驱动的晨间简报。",
     },
     group: "fun",
+    liveUrl: "https://mackding.github.io/opc-daily-signal/",
+    liveLabel: "dailySignals",
   },
 ];

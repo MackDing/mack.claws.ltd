@@ -1,0 +1,88 @@
+---
+import Icon from "./Icon.astro";
+---
+
+<section class="relative overflow-hidden bg-gradient-hero">
+  <div class="absolute inset-0 -z-10 opacity-[0.08]" aria-hidden="true">
+    <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
+      <defs>
+        <pattern id="grid" width="44" height="44" patternUnits="userSpaceOnUse">
+          <path d="M44 0H0V44" fill="none" stroke="white" stroke-width="0.5" />
+        </pattern>
+      </defs>
+      <rect width="100%" height="100%" fill="url(#grid)" />
+    </svg>
+  </div>
+
+  <div class="container-page pt-28 pb-24 md:pt-36 md:pb-32 relative">
+    <nav class="absolute top-6 inset-x-0 container-page flex items-center justify-between" aria-label="Primary">
+      <a href="/" class="font-display text-[15px] font-semibold tracking-tight text-[color:var(--color-fg)]">
+        mack<span class="text-[color:var(--color-accent-bright)]">.dev</span>
+      </a>
+      <div class="flex items-center gap-1 text-sm">
+        <a href="#projects" class="hidden sm:inline-flex px-3 py-1.5 rounded-md text-[color:var(--color-fg-muted)] hover:text-[color:var(--color-fg)] transition-colors">Projects</a>
+        <a href="#upstream" class="hidden sm:inline-flex px-3 py-1.5 rounded-md text-[color:var(--color-fg-muted)] hover:text-[color:var(--color-fg)] transition-colors">Contributions</a>
+        <a href="#contact" class="hidden sm:inline-flex px-3 py-1.5 rounded-md text-[color:var(--color-fg-muted)] hover:text-[color:var(--color-fg)] transition-colors">Contact</a>
+        <a
+          href="https://github.com/MackDing"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="GitHub profile"
+          class="inline-flex items-center justify-center w-9 h-9 rounded-md text-[color:var(--color-fg-muted)] hover:text-[color:var(--color-fg)] hover:bg-[color:var(--color-surface-hover)] transition-colors ml-1"
+        >
+          <Icon name="github" size={16} />
+        </a>
+      </div>
+    </nav>
+
+    <div class="max-w-3xl">
+      <div class="reveal reveal-1 inline-flex items-center gap-2 px-2.5 py-1 rounded-full border border-[color:var(--color-border)] bg-[color:var(--color-surface)] text-[11px] font-medium text-[color:var(--color-fg-muted)]">
+        <span class="relative flex h-1.5 w-1.5">
+          <span class="absolute inline-flex h-full w-full rounded-full bg-[color:var(--color-accent-bright)] opacity-75 animate-ping"></span>
+          <span class="relative inline-flex rounded-full h-1.5 w-1.5 bg-[color:var(--color-accent-bright)]"></span>
+        </span>
+        <span class="font-mono tracking-wide">Building in Shanghai</span>
+      </div>
+
+      <h1 class="reveal reveal-2 mt-6 font-display font-semibold text-[44px] leading-[1.05] tracking-[-0.03em] text-[color:var(--color-fg)] md:text-[72px] text-balance">
+        Hi, I&rsquo;m Mack.<br />
+        <span class="text-[color:var(--color-fg-muted)]">I build small, honest tools</span>
+        <span class="block text-[color:var(--color-fg-muted)]">
+          for
+          <span class="text-[color:var(--color-fg)] whitespace-nowrap">AI agents</span>
+          and
+          <span class="text-[color:var(--color-fg)] whitespace-nowrap">developers</span>.
+        </span>
+      </h1>
+
+      <p class="reveal reveal-3 mt-7 max-w-xl text-[17px] leading-relaxed text-[color:var(--color-fg-muted)] text-pretty">
+        Programmer based in Shanghai. Mostly open source, mostly around LLM gateways, agent tooling,
+        and the long-running developer loop. This is the index.
+      </p>
+
+      <div class="reveal reveal-4 mt-9 flex flex-wrap items-center gap-3">
+        <a
+          href="https://github.com/MackDing"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="btn btn-primary"
+        >
+          <Icon name="github" size={16} />
+          My GitHub
+          <Icon name="arrow-up-right" size={14} />
+        </a>
+        <a
+          href="https://t.me/MackClaws"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="btn btn-ghost"
+        >
+          <Icon name="telegram" size={16} />
+          Say hi
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <div class="h-px bg-gradient-to-r from-transparent via-[color:var(--color-border-strong)] to-transparent"></div>
+</section>

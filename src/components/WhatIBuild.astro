@@ -1,0 +1,49 @@
+---
+import Icon from "./Icon.astro";
+
+const pillars = [
+  {
+    icon: "sparkles",
+    title: "Agents & LLM infra",
+    body: "Telegram front-ends for code agents, K8s control planes for agent fleets, leaderboards for AI gateways.",
+  },
+  {
+    icon: "terminal",
+    title: "Developer tools",
+    body: "Small, sharp utilities for the terminal \u2014 session monitors, network doctors, onboarding skills.",
+  },
+  {
+    icon: "layers",
+    title: "Playbooks",
+    body: "Guides and patterns I&rsquo;ve learned the hard way, written down so the next person doesn&rsquo;t have to.",
+  },
+] as const;
+---
+
+<section class="relative py-24 md:py-28">
+  <div class="container-page">
+    <div class="max-w-2xl">
+      <span class="section-eyebrow reveal reveal-1"><span class="chip-dot bg-[color:var(--color-accent-bright)]"></span>What I build</span>
+      <h2 class="section-title reveal reveal-2 mt-4 text-3xl md:text-4xl text-balance">
+        Small, focused tools. Mostly open source. Some are useful. All are honest.
+      </h2>
+      <p class="reveal reveal-3 mt-5 text-[color:var(--color-fg-muted)] text-pretty leading-relaxed">
+        I care about sturdy primitives over shiny demos. Most of my work sits between an agent and the
+        real world &mdash; the LLM gateway, the observability layer, the onboarding flow, the thing you
+        run in a tmux pane at 2am.
+      </p>
+    </div>
+
+    <div class="mt-12 grid gap-4 md:grid-cols-3">
+      {pillars.map((p, i) => (
+        <div class={`card p-5 reveal reveal-${i + 2}`}>
+          <div class="inline-flex items-center justify-center w-9 h-9 rounded-lg border border-[color:var(--color-border)] bg-[color:var(--color-surface)] text-[color:var(--color-accent-bright)]">
+            <Icon name={p.icon} size={18} />
+          </div>
+          <h3 class="mt-4 font-display font-semibold text-[color:var(--color-fg)] tracking-tight">{p.title}</h3>
+          <p class="mt-1.5 text-sm leading-relaxed text-[color:var(--color-fg-muted)]" set:html={p.body}></p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

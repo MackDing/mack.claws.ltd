@@ -1,0 +1,53 @@
+---
+import ProjectCard from "./ProjectCard.astro";
+import { products, groupMeta } from "../data/products";
+
+const groups = ["agents", "devtools", "fun"] as const;
+const grouped = groups.map((g) => ({
+  key: g,
+  meta: groupMeta[g],
+  items: products.filter((p) => p.group === g),
+}));
+
+const total = products.length;
+---
+
+<section id="projects" class="relative py-20 md:py-28 scroll-mt-20">
+  <div class="container-page">
+    <div class="flex items-end justify-between gap-6 flex-wrap">
+      <div class="max-w-2xl">
+        <span class="section-eyebrow"><span class="chip-dot bg-[color:var(--color-accent-bright)]"></span>Projects &middot; {total}</span>
+        <h2 class="section-title mt-4 text-3xl md:text-4xl text-balance">
+          A small catalog of open-source tools.
+        </h2>
+        <p class="mt-4 text-[color:var(--color-fg-muted)] text-pretty leading-relaxed">
+          Grouped by what they&rsquo;re for. Click any card to open on GitHub.
+        </p>
+      </div>
+    </div>
+
+    <div class="mt-14 flex flex-col gap-14">
+      {grouped.map((g) => (
+        <div>
+          <header class="flex items-baseline justify-between gap-4 pb-4 border-b border-[color:var(--color-border)]">
+            <div>
+              <h3 class="font-display font-semibold text-[color:var(--color-fg)] text-xl tracking-tight">
+                {g.meta.title}
+              </h3>
+              <p class="mt-1 text-sm text-[color:var(--color-fg-subtle)]">{g.meta.hint}</p>
+            </div>
+            <span class="font-mono text-[11px] text-[color:var(--color-fg-subtle)] shrink-0">
+              {String(g.items.length).padStart(2, "0")} / {String(total).padStart(2, "0")}
+            </span>
+          </header>
+
+          <div class="mt-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+            {g.items.map((p) => (
+              <ProjectCard product={p} />
+            ))}
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

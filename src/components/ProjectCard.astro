@@ -1,0 +1,74 @@
+---
+import Icon from "./Icon.astro";
+import type { Product } from "../data/products";
+
+type Props = {
+  product: Product;
+};
+
+const { product } = Astro.props;
+
+const langColorVar: Record<string, string> = {
+  TypeScript: "var(--color-lang-ts)",
+  Go: "var(--color-lang-go)",
+  Python: "var(--color-lang-python)",
+  Shell: "var(--color-lang-shell)",
+  CSS: "var(--color-lang-css)",
+};
+
+const langDot = product.language ? langColorVar[product.language] : null;
+const [owner, repoName] = product.repo.split("/");
+---
+
+<a
+  href={product.url}
+  target="_blank"
+  rel="noopener noreferrer"
+  aria-label={`${product.name} on GitHub (opens in new tab)`}
+  class="card card-interactive group relative flex flex-col p-5 h-full focus:outline-none focus-visible:outline-[color:var(--color-accent-bright)]"
+>
+  <div class="flex items-start justify-between gap-3">
+    <div class="min-w-0 flex-1">
+      <div class="flex items-center gap-2 text-[11px] font-mono text-[color:var(--color-fg-subtle)]">
+        <span class="truncate">{owner}<span class="text-[color:var(--color-fg-subtle)]">/</span></span>
+      </div>
+      <h3 class="mt-0.5 font-display font-semibold text-[17px] leading-tight tracking-tight text-[color:var(--color-fg)] truncate">
+        {product.name}
+      </h3>
+    </div>
+    <span class="shrink-0 inline-flex items-center justify-center w-7 h-7 rounded-md border border-transparent text-[color:var(--color-fg-subtle)] group-hover:text-[color:var(--color-fg)] group-hover:border-[color:var(--color-border)] transition-colors">
+      <Icon name="arrow-up-right" size={14} />
+    </span>
+  </div>
+
+  <p class="mt-3 text-[14px] leading-relaxed text-[color:var(--color-fg-muted)] text-pretty line-clamp-4">
+    {product.pitch}
+  </p>
+
+  {product.pitchZh && (
+    <p class="mt-1.5 text-[12px] leading-relaxed text-[color:var(--color-fg-subtle)] line-clamp-2">
+      {product.pitchZh}
+    </p>
+  )}
+
+  <div class="mt-auto pt-4 flex items-center justify-between gap-3">
+    {product.language ? (
+      <span class="chip" style={`color: ${langDot}`}>
+        <span class="chip-dot"></span>
+        <span class="text-[color:var(--color-fg-muted)]">{product.language}</span>
+      </span>
+    ) : (
+      <span class="chip text-[color:var(--color-fg-subtle)]">
+        <span class="chip-dot bg-[color:var(--color-fg-subtle)]"></span>
+        <span>docs</span>
+      </span>
+    )}
+
+    {typeof product.stars === "number" && (
+      <span class="inline-flex items-center gap-1 text-[12px] text-[color:var(--color-fg-muted)] font-mono tabular-nums">
+        <Icon name="star" size={12} class="text-[color:var(--color-star)]" />
+        {product.stars}
+      </span>
+    )}
+  </div>
+</a>

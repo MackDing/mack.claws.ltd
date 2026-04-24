@@ -1,0 +1,83 @@
+---
+import Icon from "./Icon.astro";
+
+const contributions = [
+  {
+    project: "OpenClaw",
+    title: "feat(onboard): add custom/local API configuration flow",
+    prNumber: 11106,
+    url: "https://github.com/openclaw/openclaw/pull/11106",
+    status: "In review",
+    summary:
+      "Added a Custom / Local API onboarding flow to OpenClaw (Ollama, vLLM, LocalAI, any OpenAI-compatible endpoint). Auto-discovers models from /models, falls back to manual entry, and verifies connectivity before saving.",
+  },
+];
+---
+
+<section id="upstream" class="relative py-20 md:py-24 scroll-mt-20">
+  <div class="container-page">
+    <div class="max-w-2xl">
+      <span class="section-eyebrow"><span class="chip-dot bg-[color:var(--color-accent-bright)]"></span>Upstream contributions</span>
+      <h2 class="section-title mt-4 text-3xl md:text-4xl text-balance">
+        Patches I&rsquo;m sending upstream.
+      </h2>
+      <p class="mt-4 text-[color:var(--color-fg-muted)] text-pretty leading-relaxed">
+        Work landing outside my own repos. Small list on purpose &mdash; I try to do each one well.
+      </p>
+    </div>
+
+    <ul class="mt-12 grid gap-4 md:grid-cols-2">
+      {contributions.map((c) => (
+        <li>
+          <a
+            href={c.url}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label={`${c.project} PR #${c.prNumber} (opens in new tab)`}
+            class="card card-interactive group relative flex flex-col p-6 h-full focus:outline-none focus-visible:outline-[color:var(--color-accent-bright)]"
+          >
+            <div class="flex items-center justify-between gap-3">
+              <div class="flex items-center gap-2">
+                <span class="chip">
+                  <span class="chip-dot bg-[color:var(--color-accent-bright)]"></span>
+                  <span class="text-[color:var(--color-fg)]">{c.project}</span>
+                </span>
+                <span class="chip text-[color:var(--color-fg-muted)]">
+                  <span class="chip-dot bg-[color:var(--color-star)]"></span>
+                  {c.status}
+                </span>
+              </div>
+              <span class="shrink-0 inline-flex items-center justify-center w-7 h-7 rounded-md text-[color:var(--color-fg-subtle)] group-hover:text-[color:var(--color-fg)] transition-colors">
+                <Icon name="arrow-up-right" size={14} />
+              </span>
+            </div>
+
+            <div class="mt-5 flex items-start gap-3">
+              <span class="shrink-0 inline-flex items-center justify-center w-9 h-9 rounded-lg border border-[color:var(--color-border)] bg-[color:var(--color-surface)] text-[color:var(--color-accent-bright)]">
+                <Icon name="git-pull-request" size={16} />
+              </span>
+              <div class="min-w-0">
+                <h3 class="font-display font-semibold text-[color:var(--color-fg)] tracking-tight leading-snug">
+                  {c.title}
+                </h3>
+                <p class="mt-1 font-mono text-[12px] text-[color:var(--color-fg-subtle)]">
+                  {c.project.toLowerCase()}#{c.prNumber}
+                </p>
+              </div>
+            </div>
+
+            <p class="mt-4 text-[14px] leading-relaxed text-[color:var(--color-fg-muted)] text-pretty">
+              {c.summary}
+            </p>
+          </a>
+        </li>
+      ))}
+
+      <li class="hidden md:flex card border-dashed items-center justify-center p-6 min-h-[200px] text-center">
+        <p class="text-sm text-[color:var(--color-fg-subtle)] leading-relaxed max-w-[200px]">
+          More upstream work lands here soon.
+        </p>
+      </li>
+    </ul>
+  </div>
+</section>

@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="noindex, nofollow" />
+    <title>OG card debug — mack.dev</title>
+    <style>
+      :root { color-scheme: dark; }
+      html, body {
+        margin: 0;
+        background: #07080B;
+        color: #EDEEF0;
+        font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+      }
+      body {
+        min-height: 100vh;
+        padding: 48px 24px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 32px;
+      }
+      h1 { font-size: 20px; font-weight: 600; letter-spacing: -0.01em; margin: 0; }
+      p { color: #9A9EA6; margin: 4px 0 0; font-size: 13px; }
+      code { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; color: #7C85E1; }
+      .panel {
+        width: 100%;
+        max-width: 720px;
+        background: rgba(255,255,255,0.03);
+        border: 1px solid rgba(255,255,255,0.08);
+        border-radius: 14px;
+        overflow: hidden;
+      }
+      .panel header {
+        padding: 14px 18px;
+        border-bottom: 1px solid rgba(255,255,255,0.08);
+        display: flex;
+        align-items: baseline;
+        justify-content: space-between;
+        gap: 16px;
+        font-size: 12px;
+        color: #9A9EA6;
+      }
+      .panel img {
+        display: block;
+        width: 100%;
+        height: auto;
+        background: #07080B;
+      }
+      /* Twitter-card-ish framing */
+      .tw header::before { content: "twitter.com"; }
+      .fb header::before { content: "facebook.com"; }
+      .ln header::before { content: "linkedin.com"; }
+      .panel header::before { color: #EDEEF0; font-weight: 600; }
+      .meta {
+        max-width: 720px;
+        width: 100%;
+        color: #9A9EA6;
+        font-size: 12px;
+        font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+        line-height: 1.6;
+      }
+      .meta span { color: #EDEEF0; }
+    </style>
+  </head>
+  <body>
+    <div style="text-align:center">
+      <h1>OG card debug</h1>
+      <p>Preview of <code>/og-image.png</code> as rendered by social cards.</p>
+    </div>
+
+    <section class="panel tw" aria-label="Twitter / X preview">
+      <header><span>summary_large_image · 1200×630</span></header>
+      <img src="/og-image.png" alt="OG image for mack.dev" width="1200" height="630" />
+    </section>
+
+    <section class="panel fb" aria-label="Facebook / Open Graph preview">
+      <header><span>og:image · 1200×630</span></header>
+      <img src="/og-image.png" alt="OG image for mack.dev" width="1200" height="630" />
+    </section>
+
+    <section class="panel ln" aria-label="LinkedIn preview">
+      <header><span>article preview · 1200×630</span></header>
+      <img src="/og-image.png" alt="OG image for mack.dev" width="1200" height="630" />
+    </section>
+
+    <pre class="meta">og:title        <span>Mack Ding — open-source tools for AI agents, LLM gateways, and dev productivity</span>
+og:description  <span>Mack Ding is a programmer in Shanghai. I build small, focused open-source tools around AI agents, LLM gateways, and developer productivity.</span>
+og:url          <span>https://mack.claws.ltd/</span>
+og:image        <span>https://mack.claws.ltd/og-image.png</span>
+twitter:card    <span>summary_large_image</span></pre>
+  </body>
+</html>

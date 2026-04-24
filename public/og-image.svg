@@ -1,0 +1,60 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#0A0C12"/>
+      <stop offset="1" stop-color="#07080B"/>
+    </linearGradient>
+    <radialGradient id="glow1" cx="0.25" cy="0.2" r="0.6">
+      <stop offset="0" stop-color="#5E6AD2" stop-opacity="0.35"/>
+      <stop offset="1" stop-color="#5E6AD2" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="glow2" cx="0.85" cy="0.15" r="0.45">
+      <stop offset="0" stop-color="#7C85E1" stop-opacity="0.22"/>
+      <stop offset="1" stop-color="#7C85E1" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="mark" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#7C85E1"/>
+      <stop offset="1" stop-color="#5E6AD2"/>
+    </linearGradient>
+    <pattern id="grid" width="44" height="44" patternUnits="userSpaceOnUse">
+      <path d="M44 0H0V44" fill="none" stroke="white" stroke-width="0.5"/>
+    </pattern>
+  </defs>
+
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  <rect width="1200" height="630" fill="url(#grid)" opacity="0.05"/>
+  <rect width="1200" height="630" fill="url(#glow1)"/>
+  <rect width="1200" height="630" fill="url(#glow2)"/>
+
+  <g transform="translate(88 92)">
+    <rect x="0" y="0" width="72" height="72" rx="16" fill="#0C0E13" stroke="rgba(255,255,255,0.08)"/>
+    <path d="M16 52 V20 L27 38 L38 20 L49 38 V20" fill="none" stroke="url(#mark)" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round"/>
+    <circle cx="56" cy="52" r="3.4" fill="#7C85E1"/>
+  </g>
+
+  <g font-family="'Space Grotesk', 'DejaVu Sans', sans-serif">
+    <text x="180" y="140" fill="#EDEEF0" font-size="26" font-weight="600" letter-spacing="-0.3">
+      mack<tspan fill="#7C85E1">.dev</tspan>
+    </text>
+  </g>
+
+  <g font-family="'Space Grotesk', 'DejaVu Sans', sans-serif" fill="#EDEEF0" font-weight="700">
+    <text x="88" y="310" font-size="86" letter-spacing="-2.5">Mack Ding</text>
+    <text x="88" y="400" font-size="50" letter-spacing="-1.25" fill="#9A9EA6" font-weight="500">
+      Small, honest tools for
+    </text>
+    <text x="88" y="462" font-size="50" letter-spacing="-1.25" fill="#EDEEF0" font-weight="600">
+      AI agents and developers.
+    </text>
+  </g>
+
+  <g font-family="'JetBrains Mono', 'DejaVu Sans Mono', monospace" fill="#9A9EA6" font-size="16" font-weight="500" letter-spacing="1.4">
+    <text x="88" y="548">OPEN SOURCE · SHANGHAI · @MACKDING</text>
+  </g>
+
+  <g transform="translate(88 568)">
+    <rect x="0" y="2" width="72" height="6" rx="3" fill="#5E6AD2"/>
+    <rect x="80" y="2" width="28" height="6" rx="3" fill="rgba(255,255,255,0.14)"/>
+    <rect x="114" y="2" width="14" height="6" rx="3" fill="rgba(255,255,255,0.08)"/>
+  </g>
+</svg>

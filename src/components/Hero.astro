@@ -81,8 +81,36 @@ import Icon from "./Icon.astro";
           Say hi
         </a>
       </div>
+
+      <a
+        href="#projects"
+        id="scroll-hint"
+        class="scroll-hint mt-10 inline-flex flex-col items-center gap-1.5 text-[11px] font-mono uppercase tracking-[0.12em] text-[color:var(--color-fg-subtle)] hover:text-[color:var(--color-fg-muted)] transition-colors"
+        aria-label="Scroll to projects"
+      >
+        <span>Scroll</span>
+        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="m6 9 6 6 6-6" />
+        </svg>
+      </a>
     </div>
   </div>
 
   <div class="h-px bg-gradient-to-r from-transparent via-[color:var(--color-border-strong)] to-transparent"></div>
 </section>
+
+<script is:inline>
+  (() => {
+    const hint = document.getElementById("scroll-hint");
+    if (!hint) return;
+    let hidden = false;
+    const onScroll = () => {
+      if (!hidden && window.scrollY > 200) {
+        hint.dataset.hidden = "true";
+        hidden = true;
+        window.removeEventListener("scroll", onScroll);
+      }
+    };
+    window.addEventListener("scroll", onScroll, { passive: true });
+  })();
+</script>

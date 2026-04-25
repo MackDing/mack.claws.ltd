@@ -11,9 +11,24 @@ export type Product = {
   featured?: boolean;
   liveUrl?: string;
   liveLabel?: LiveLabelKey;
+  status?: "alpha" | "beta" | "stable";
 };
 
 export const products: Product[] = [
+  {
+    name: "create-opc-wiki",
+    repo: "MackDing/create-opc-wiki",
+    url: "https://github.com/MackDing/create-opc-wiki",
+    language: "TypeScript",
+    stars: 0,
+    pitch: {
+      en: "Build your own local LLM Wiki in 30 seconds. Multi-agent native (Claude/Codex/Cursor/Trae), MCP server built-in, Astro static site publishing.",
+      zh: "30 秒搭你自己的本地 LLM Wiki。多 Agent 原生（Claude/Codex/Cursor/Trae），内置 MCP server，Astro 静态站点发布。",
+    },
+    group: "agents",
+    featured: true,
+    status: "alpha",
+  },
   {
     name: "CodexClaw",
     repo: "MackDing/CodexClaw",

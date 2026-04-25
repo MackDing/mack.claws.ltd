@@ -88,6 +88,8 @@ export const i18n = {
       ctaPrimaryAria: "Visit opc.ren (opens in new tab)",
       ctaSecondary: "Read daily signals",
       ctaSecondaryAria: "Read OPC daily signals (opens in new tab)",
+      currentlyBuilding: "Currently building: ",
+      currentlyBuildingLink: "create-opc-wiki — a one-line scaffold for the local LLM Wiki pattern.",
     },
     groups: {
       agents: {
@@ -235,6 +237,8 @@ export const i18n = {
       ctaPrimaryAria: "\u6253\u5F00 opc.ren\uFF08\u65B0\u6807\u7B7E\u9875\u6253\u5F00\uFF09",
       ctaSecondary: "\u8BFB\u6BCF\u65E5\u60C5\u62A5",
       ctaSecondaryAria: "\u9605\u8BFB OPC \u6BCF\u65E5\u60C5\u62A5\uFF08\u65B0\u6807\u7B7E\u9875\u6253\u5F00\uFF09",
+      currentlyBuilding: "\u6B63\u5728\u6784\u5EFA\uFF1A",
+      currentlyBuildingLink: "create-opc-wiki \u2014\u2014 \u4E00\u884C\u547D\u4EE4\u642D\u597D\u672C\u5730 LLM Wiki\u3002",
     },
     groups: {
       agents: {

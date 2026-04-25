@@ -56,6 +56,11 @@ const liveLabel = product.liveLabel ? t.ui.card.live[product.liveLabel] : null;
       </h3>
     </div>
     <div class="flex items-center gap-1.5 shrink-0">
+      {product.status === "alpha" && (
+        <span class="inline-flex items-center rounded-full px-2 py-0.5 text-[10px] font-semibold font-mono tracking-wide bg-amber-500/15 text-amber-400 border border-amber-500/30">
+          ALPHA
+        </span>
+      )}
       {product.liveUrl && liveLabel && (
         <a
           href={product.liveUrl}

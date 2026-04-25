@@ -7,7 +7,7 @@ export const i18n = {
       title:
         "Mack Ding — open-source tools for AI agents, LLM gateways, and dev productivity",
       description:
-        "Mack Ding \u2014 AI-native developer in Shenzhen. Open-source tools around AI agents, LLM gateways, and developer productivity.",
+        "Mack Ding \u2014 AI-native developer in Shenzhen. I build quiet open-source tools around AI agents, LLM gateways, and developer productivity.",
     },
     nav: {
       projects: "Projects",
@@ -17,13 +17,9 @@ export const i18n = {
     },
     hero: {
       badge: "AI-native dev \u00b7 Shenzhen",
-      titleLine1: "Hi, I\u2019m Mack.",
-      titleLine2: "I build small, honest tools",
-      titleLine3a: "for",
-      titleLine3b: "AI agents",
-      titleLine3c: "and",
-      titleLine3d: "developers",
-      sub: "AI-native developer in Shenzhen. Most of my work is open source \u2014 small, focused tools at the edge of AI agents, LLM gateways, and the long-running developer loop. Built alongside Claude Code, Codex, and a lot of curiosity.",
+      titleLine1: "I build quiet tools.",
+      titleLine2: "The ones you forget you\u2019re using.",
+      sub: "AI-native developer in Shenzhen. Open source, mostly \u2014 small, focused pieces at the edge of AI agents, LLM gateways, and the long developer loop. Shipped alongside Claude Code, Codex, and too much coffee.",
       ctaFollow: "Follow @MackDing",
       ctaFollowAria: (n: number | null) =>
         n === null
@@ -157,7 +153,7 @@ export const i18n = {
       title:
         "Mack Ding \u2014 \u4E3A AI \u667A\u80FD\u4F53\u3001LLM \u7F51\u5173\u4E0E\u5F00\u53D1\u8005\u6548\u7387\u6253\u9020\u7684\u5F00\u6E90\u5DE5\u5177",
       description:
-        "Mack Ding \u2014 AI-native \u5F00\u53D1\u8005\uFF0C\u5728\u6DF1\u5733\u3002\u4E13\u6CE8 AI Agent\u3001LLM \u7F51\u5173\u3001\u5F00\u53D1\u8005\u5DE5\u4F5C\u6D41\u7684\u5F00\u6E90\u5DE5\u5177\u3002",
+        "Mack Ding \u2014 AI-native \u5F00\u53D1\u8005\uFF0C\u5728\u6DF1\u5733\u3002\u9020\u5B89\u9759\u7684\u5F00\u6E90\u5DE5\u5177 \u2014\u2014 AI Agent\u3001LLM \u7F51\u5173\u3001\u5F00\u53D1\u8005\u5DE5\u4F5C\u6D41\u3002",
     },
     nav: {
       projects: "\u9879\u76EE",
@@ -167,12 +163,8 @@ export const i18n = {
     },
     hero: {
       badge: "AI-native \u00b7 \u6DF1\u5733",
-      titleLine1: "\u4F60\u597D\uFF0C\u6211\u662F Mack\u3002",
-      titleLine2: "\u6211\u5728\u505A\u5C0F\u800C\u8BDA\u5B9E\u7684\u5DE5\u5177",
-      titleLine3a: "\u4E3A",
-      titleLine3b: "AI \u667A\u80FD\u4F53",
-      titleLine3c: "\u4E0E",
-      titleLine3d: "\u5F00\u53D1\u8005",
+      titleLine1: "\u6211\u9020\u5B89\u9759\u7684\u5DE5\u5177\u3002",
+      titleLine2: "\u4F60\u751A\u81F3\u610F\u8BC6\u4E0D\u5230\u81EA\u5DF1\u5728\u7528\u7684\u90A3\u79CD\u3002",
       sub: "AI-native \u5F00\u53D1\u8005\uFF0C\u5728\u6DF1\u5733\u3002\u5F00\u6E90\u4E3A\u4E3B \u2014\u2014 \u4E13\u6CE8\u5728 AI Agent\u3001LLM \u7F51\u5173\u3001\u4EE5\u53CA\u957F\u8DD1\u7684\u5F00\u53D1\u8005\u5DE5\u4F5C\u6D41\u7684\u8FB9\u754C\u4E0A\u3002\u7528 Claude Code\u3001Codex \u548C\u4E00\u5806\u597D\u5947\u5FC3\u9020\u51FA\u6765\u3002",
       ctaFollow: "\u5173\u6CE8 @MackDing",
       ctaFollowAria: (n: number | null) =>

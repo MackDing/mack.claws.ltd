@@ -1,0 +1,43 @@
+v11 iteration. Six repos have been migrated from MackDing/ to Claws-ZH/.
+Update src/data/products.ts to point to the new locations.
+
+==== AFFECTED REPOS ====
+
+These 5 repos are referenced in products.ts and have moved:
+
+  MackDing/create-opc-wiki   →  Claws-ZH/create-opc-wiki
+  MackDing/awesome-ai-api    →  Claws-ZH/awesome-ai-api
+  MackDing/hermes-manager    →  Claws-ZH/hermes-manager
+  MackDing/ai-agents         →  Claws-ZH/ai-agents
+  MackDing/opc-daily-signal  →  Claws-ZH/opc-daily-signal
+
+(MackDing/agent-vault also moved, but it's not in products.ts yet — leave it.)
+
+==== CHANGES ====
+
+For each of the 5 repos above, in src/data/products.ts:
+  1. Change `repo: "MackDing/<name>"`  →  `repo: "Claws-ZH/<name>"`
+  2. Change `url: "https://github.com/MackDing/<name>"`  →  `url: "https://github.com/Claws-ZH/<name>"`
+
+ALSO fix the broken liveUrl values (mackding.github.io is no longer serving these):
+  3. `liveUrl: "https://mackding.github.io/awesome-ai-api/"`   →  `"https://Claws-ZH.github.io/awesome-ai-api/"`
+  4. `liveUrl: "https://mackding.github.io/opc-daily-signal/"` →  `"https://Claws-ZH.github.io/opc-daily-signal/"`
+
+ALSO update src/components/MainProduct.astro (Currently building link):
+  5. `https://github.com/MackDing/create-opc-wiki` → `https://github.com/Claws-ZH/create-opc-wiki`
+
+==== DO NOT TOUCH ====
+
+- CodexClaw, doc-preprocess-hub, zh-policy-rag, claude-context-health, claude-cli-session-monitor, network-egress-doctor, mentalModelMap → these are still under MackDing/.
+- Hero, OPC banner main content, palette, layout — unchanged.
+- UpstreamContributions.astro — unchanged (those PRs are to other people's repos).
+
+==== QUALITY BAR ====
+
+- pnpm build exits 0; dist/ regenerated.
+- TypeScript compiles cleanly.
+- ONE commit, message:
+    feat(v11): migrate 5 repo links to Claws-ZH org + fix broken liveUrl Pages
+
+When completely finished run:
+openclaw system event --text "Done: v11 live (5 repo links migrated to Claws-ZH org). Cmd+Shift+R." --mode now

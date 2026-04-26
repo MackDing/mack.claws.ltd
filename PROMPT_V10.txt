@@ -1,0 +1,45 @@
+v10 iteration. Read src/components/UpstreamContributions.astro and src/data/i18n.ts.
+
+GOAL — add a third card to the Upstream Contributions section, then build + commit.
+
+==== CHANGE: add LiteLLM contribution card ====
+
+In `src/components/UpstreamContributions.astro`, the `contributions` array currently has two entries (OpenClaw, JackClawOS). Add a THIRD entry, BEFORE the existing two (LiteLLM is the most recent + highest signal):
+
+  {
+    project: "BerriAI/litellm",
+    title: "fix(ui): add missing 'zai' (Z.AI / Zhipu AI) provider to Add-Model dropdown",
+    prNumber: 26419,
+    url: "https://github.com/BerriAI/litellm/pull/26419",
+    status: t.upstream.statusMerged,
+    mergedLine: t.upstream.litellm.mergedLine,
+    summary: t.upstream.litellm.summary,
+  },
+
+Note: ordering should be NEWEST FIRST. The new entry goes at index 0.
+
+In `src/data/i18n.ts`, add a `litellm` block under BOTH the `en.upstream` object and the `zh.upstream` object, parallel to the existing `openclaw` and `jackclaw` blocks.
+
+EN:
+  litellm: {
+    mergedLine: "Merged Apr 25, 2026",
+    summary:
+      "Added the Z.AI (Zhipu AI) provider entry to the LiteLLM admin UI Add-Model dropdown. The backend already supported zai/* models (e.g. zai/glm-4.5), but the dropdown was driven by a hard-coded enum that excluded it. PR adds the enum entry, provider_map binding, default-model placeholder, and two regression tests.",
+  },
+
+ZH:
+  litellm: {
+    mergedLine: "已于 2026 年 4 月 25 日合并",
+    summary:
+      "在 LiteLLM 管理后台的 Add-Model 下拉里加上了 Z.AI（智谱）选项。后端早就支持 zai/* 模型（比如 zai/glm-4.5），但下拉用的是硬编码 enum，把 Z.AI 漏掉了。这个 PR 补上 enum 项、provider_map 映射、默认模型占位，附两个回归测试。",
+  },
+
+==== QUALITY BAR ====
+
+- Do NOT change palette, OPC banner, hero, project grid, footer, or other cards.
+- TypeScript still compiles.
+- pnpm build exits 0; dist/ regenerated.
+- ONE commit, message: feat(v10): add BerriAI/litellm Z.AI provider PR to upstream contributions
+
+When completely finished run:
+openclaw system event --text "Done: v10 live (LiteLLM contribution added). Cmd+Shift+R." --mode now

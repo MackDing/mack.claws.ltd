@@ -1,0 +1,51 @@
+v9 iteration. Read BRIEF.md, src/data/products.ts, src/components/ProjectCard.astro (or whatever renders cards), and src/data/i18n.ts.
+
+GOAL — two changes, one commit:
+
+==== CHANGE 1: add `create-opc-wiki` to the project grid ====
+
+Add this new entry to `src/data/products.ts` (insert it as the FIRST entry in the array, so it shows top-left in the grid — it's the "currently building" hero):
+
+  {
+    name: "create-opc-wiki",
+    repo: "MackDing/create-opc-wiki",
+    url: "https://github.com/MackDing/create-opc-wiki",
+    language: "TypeScript",
+    stars: 0,
+    pitch: {
+      en: "Build your own local LLM Wiki in 30 seconds. Multi-agent native (Claude/Codex/Cursor/Trae), MCP server built-in, Astro static site publishing.",
+      zh: "30 秒搭你自己的本地 LLM Wiki。多 Agent 原生（Claude/Codex/Cursor/Trae），内置 MCP server，Astro 静态站点发布。",
+    },
+    group: "agents",
+    featured: true,
+    status: "alpha",
+  },
+
+You will need to:
+- Add `status?: "alpha" | "beta" | "stable"` to the `Product` type in products.ts.
+- In ProjectCard.astro (or wherever cards render), if `status === "alpha"`, render a small pill-shaped badge with the text:
+    EN: ALPHA
+    ZH: ALPHA   (keep "ALPHA" — do not translate; the term is universally understood)
+  Style: same shape as the language pill, but with a distinctive accent color (use amber/orange to signal "in progress" — NOT the indigo accent used for live links, NOT the green used for "stable", to avoid confusion). Position: top-right corner of the card, or right next to the project name.
+- Respect the `Product` type — TypeScript should still compile cleanly.
+
+==== CHANGE 2: add a small "Currently building" line under the OPC banner ====
+
+In MainProduct.astro (the OPC banner), add a small italicized line below the two CTA buttons:
+
+  EN: Currently building: create-opc-wiki — a one-line scaffold for the local LLM Wiki pattern.
+  ZH: 正在构建：create-opc-wiki —— 一行命令搭好本地 LLM Wiki。
+
+Make it a link to https://github.com/MackDing/create-opc-wiki (opens in new tab, rel noopener). Style: smaller text, slightly muted color (still readable but visually subordinate to the main banner content). On hover: the link gets a subtle underline.
+
+Add the strings to src/data/i18n.ts under a new key like `mainProduct.currentlyBuilding` and `mainProduct.currentlyBuildingLink`.
+
+==== QUALITY BAR ====
+
+- Do NOT change palette, starfield, hero, typography, OPC banner main content, or other cards.
+- All new strings live in src/data/i18n.ts.
+- Respect WCAG AA on the alpha badge color contrast.
+- Run pnpm build. Verify clean build.
+- Commit as ONE commit with message: feat(v9): add create-opc-wiki card with alpha badge and currently-building link
+
+When completely finished run: openclaw system event --text "Done: v9 live (create-opc-wiki added, alpha badge, currently-building line). Cmd+Shift+R." --mode now

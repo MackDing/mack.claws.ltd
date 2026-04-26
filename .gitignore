@@ -23,3 +23,6 @@ pnpm-debug.log*
 .vscode/
 .idea/
 *.swp
+
+# cron rebuild logs (local only)
+.rebuild-logs/

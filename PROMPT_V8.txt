@@ -1,0 +1,33 @@
+v8 iteration. Read BRIEF.md, src/data/i18n.ts, and current Hero.astro.
+
+GOAL: lock the hero copy to version B (quiet tools) in BOTH locales. The Chinese translation may already match. The English one probably still says something like "I build small, honest tools for AI agents and developers."
+
+Enforce these exact strings in src/data/i18n.ts:
+
+EN hero headline (the big line under the name, TWO visual lines):
+  I build quiet tools.
+  The ones you forget you're using.
+
+  Render line 2 as a second visual line (a <br /> in the template is fine). Keep line 2 slightly smaller or slightly less bold if your design system supports it. Same size is also fine.
+
+EN hero sub-paragraph:
+  AI-native developer in Shenzhen. Open source, mostly — small, focused pieces at the edge of AI agents, LLM gateways, and the long developer loop. Shipped alongside Claude Code, Codex, and too much coffee.
+
+ZH hero headline (two lines):
+  我造安静的工具。
+  你甚至意识不到自己在用的那种。
+
+ZH hero sub-paragraph:
+  AI-native 开发者，在深圳。开源为主 —— 专注在 AI Agent、LLM 网关、以及长跑的开发者工作流的边界上。用 Claude Code、Codex 和一堆好奇心造出来。
+
+Also update meta description in src/layouts/Layout.astro (or wherever the page <meta name="description"> is set):
+  EN: Mack Ding — AI-native developer in Shenzhen. I build quiet open-source tools around AI agents, LLM gateways, and developer productivity.
+  ZH: Mack Ding — AI-native 开发者，在深圳。造安静的开源工具 —— AI Agent、LLM 网关、开发者工作流。
+
+NO other changes. Keep palette, gradient, starfield, layout, OPC banner, buttons, i18n toggle, project grid.
+
+Run pnpm build. Verify clean build (no errors, no warnings about missing keys).
+
+Commit as ONE commit with this exact message: feat(v8): lock hero copy to version B (quiet tools) in both locales
+
+When finished run: openclaw system event --text "Done: v8 hero copy locked (quiet tools, EN + ZH). Cmd+Shift+R." --mode now

@@ -120,6 +120,11 @@ export const i18n = {
         summary:
           "Expanded JackClawOS\u2019s AI team from 3 generic nodes to 7 methodology-driven nodes, each with a full gstack-inspired systemPrompt: role definition, philosophy, step-by-step workflow, structured output, and a completion status protocol.",
       },
+      litellm: {
+        mergedLine: "Merged Apr 25, 2026",
+        summary:
+          "Added the Z.AI (Zhipu AI) provider entry to the LiteLLM admin UI Add-Model dropdown. The backend already supported zai/* models (e.g. zai/glm-4.5), but the dropdown was driven by a hard-coded enum that excluded it. PR adds the enum entry, provider_map binding, default-model placeholder, and two regression tests.",
+      },
       placeholder: "More upstream work lands here soon.",
       cardAria: (project: string, pr: number) =>
         `${project} PR #${pr} (opens in new tab)`,
@@ -268,6 +273,11 @@ export const i18n = {
         mergedLine: "\u5DF2\u4E8E 2026 \u5E74 4 \u6708 11 \u65E5\u5408\u5E76",
         summary:
           "\u628A JackClawOS \u7684 AI \u56E2\u961F\u4ECE 3 \u4E2A\u901A\u7528\u8282\u70B9\u6269\u5C55\u5230 7 \u4E2A\u6709\u65B9\u6CD5\u8BBA\u7684\u8282\u70B9\u3002\u6BCF\u4E2A\u8282\u70B9\u7684 systemPrompt \u5305\u542B\u5B8C\u6574\u7684 gstack \u98CE\u683C\u5DE5\u4F5C\u6D41\uFF1A\u89D2\u8272\u5B9A\u4E49\u3001\u6838\u5FC3\u54F2\u5B66\u3001\u5206\u6B65\u6D41\u7A0B\u3001\u7ED3\u6784\u5316\u8F93\u51FA\u3001\u5B8C\u6210\u72B6\u6001\u534F\u8BAE\u3002",
+      },
+      litellm: {
+        mergedLine: "已于 2026 年 4 月 25 日合并",
+        summary:
+          "在 LiteLLM 管理后台的 Add-Model 下拉里加上了 Z.AI（智谱）选项。后端早就支持 zai/* 模型（比如 zai/glm-4.5），但下拉用的是硬编码 enum，把 Z.AI 漏掉了。这个 PR 补上 enum 项、provider_map 映射、默认模型占位，附两个回归测试。",
       },
       placeholder: "\u66F4\u591A\u4E0A\u6E38\u5DE5\u4F5C\uFF0C\u5F88\u5FEB\u4F1A\u843D\u5728\u8FD9\u91CC\u3002",
       cardAria: (project: string, pr: number) =>

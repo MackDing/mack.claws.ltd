@@ -17,8 +17,8 @@ export type Product = {
 export const products: Product[] = [
   {
     name: "create-opc-wiki",
-    repo: "MackDing/create-opc-wiki",
-    url: "https://github.com/MackDing/create-opc-wiki",
+    repo: "Claws-ZH/create-opc-wiki",
+    url: "https://github.com/Claws-ZH/create-opc-wiki",
     language: "TypeScript",
     stars: 0,
     pitch: {
@@ -44,8 +44,8 @@ export const products: Product[] = [
   },
   {
     name: "awesome-ai-api",
-    repo: "MackDing/awesome-ai-api",
-    url: "https://github.com/MackDing/awesome-ai-api",
+    repo: "Claws-ZH/awesome-ai-api",
+    url: "https://github.com/Claws-ZH/awesome-ai-api",
     language: "Python",
     stars: 1,
     pitch: {
@@ -53,13 +53,13 @@ export const products: Product[] = [
       zh: "目前最大的开源 AI API 网关与中转榜单,每天探一次 /v1/models,中英双语。",
     },
     group: "agents",
-    liveUrl: "https://mackding.github.io/awesome-ai-api/",
+    liveUrl: "https://Claws-ZH.github.io/awesome-ai-api/",
     liveLabel: "exploreList",
   },
   {
     name: "hermes-manager",
-    repo: "MackDing/hermes-manager",
-    url: "https://github.com/MackDing/hermes-manager",
+    repo: "Claws-ZH/hermes-manager",
+    url: "https://github.com/Claws-ZH/hermes-manager",
     language: "Go",
     stars: 1,
     pitch: {
@@ -82,8 +82,8 @@ export const products: Product[] = [
   },
   {
     name: "ai-agents",
-    repo: "MackDing/ai-agents",
-    url: "https://github.com/MackDing/ai-agents",
+    repo: "Claws-ZH/ai-agents",
+    url: "https://github.com/Claws-ZH/ai-agents",
     language: "Python",
     stars: 1,
     pitch: {
@@ -152,8 +152,8 @@ export const products: Product[] = [
   },
   {
     name: "opc-daily-signal",
-    repo: "MackDing/opc-daily-signal",
-    url: "https://github.com/MackDing/opc-daily-signal",
+    repo: "Claws-ZH/opc-daily-signal",
+    url: "https://github.com/Claws-ZH/opc-daily-signal",
     language: "CSS",
     stars: 2,
     pitch: {
@@ -161,7 +161,7 @@ export const products: Product[] = [
       zh: "一人公司的每日决策情报 —— AI 驱动的晨间简报。",
     },
     group: "fun",
-    liveUrl: "https://mackding.github.io/opc-daily-signal/",
+    liveUrl: "https://Claws-ZH.github.io/opc-daily-signal/",
     liveLabel: "dailySignals",
   },
 ];

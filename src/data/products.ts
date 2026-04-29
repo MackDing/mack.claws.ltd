@@ -160,7 +160,7 @@ export const products: Product[] = [
       en: "Daily decision intelligence for one-person companies — AI-powered morning brief.",
       zh: "一人公司的每日决策情报 —— AI 驱动的晨间简报。",
     },
-    group: "fun",
+    group: "agents",
     liveUrl: "https://Claws-ZH.github.io/opc-daily-signal/",
     liveLabel: "dailySignals",
   },

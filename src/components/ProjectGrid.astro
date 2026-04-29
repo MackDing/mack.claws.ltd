@@ -11,11 +11,13 @@ const t = i18n[lang];
 const gh = await getGitHubData(products.map((p) => p.repo));
 
 const groups = ["agents", "devtools", "fun"] as const;
-const grouped = groups.map((g) => ({
-  key: g,
-  meta: t.groups[g],
-  items: products.filter((p) => p.group === g),
-}));
+const grouped = groups
+  .map((g) => ({
+    key: g,
+    meta: t.groups[g],
+    items: products.filter((p) => p.group === g),
+  }))
+  .filter((g) => g.items.length > 0);
 
 const total = products.length;
 ---

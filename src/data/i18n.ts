@@ -125,6 +125,11 @@ export const i18n = {
         summary:
           "Added the Z.AI (Zhipu AI) provider entry to the LiteLLM admin UI Add-Model dropdown. The backend already supported zai/* models (e.g. zai/glm-4.5), but the dropdown was driven by a hard-coded enum that excluded it. PR adds the enum entry, provider_map binding, default-model placeholder, and two regression tests.",
       },
+      netcatty: {
+        mergedLine: "Merged Apr 30, 2026",
+        summary:
+          "Replaced the remaining native browser tooltips in Netcatty's SFTP transfer queue with the shared Radix tooltip component, so retry / dismiss / resize / expand controls match the app's rounded visual style. Added EN + zh-CN i18n strings and a new test file for SftpTransferItem.",
+      },
       placeholder: "More upstream work lands here soon.",
       cardAria: (project: string, pr: number) =>
         `${project} PR #${pr} (opens in new tab)`,
@@ -278,6 +283,11 @@ export const i18n = {
         mergedLine: "已于 2026 年 4 月 25 日合并",
         summary:
           "在 LiteLLM 管理后台的 Add-Model 下拉里加上了 Z.AI（智谱）选项。后端早就支持 zai/* 模型（比如 zai/glm-4.5），但下拉用的是硬编码 enum，把 Z.AI 漏掉了。这个 PR 补上 enum 项、provider_map 映射、默认模型占位，附两个回归测试。",
+      },
+      netcatty: {
+        mergedLine: "已于 2026 年 4 月 30 日合并",
+        summary:
+          "把 Netcatty SFTP 传输队列里残留的浏览器原生 tooltip 替换成共用的 Radix tooltip 组件，让重试 / 取消 / 调整列宽 / 展开折叠按钮也用上 App 的圆角样式。同步加了英文和简体中文的 i18n，并补了 SftpTransferItem 的测试。",
       },
       placeholder: "\u66F4\u591A\u4E0A\u6E38\u5DE5\u4F5C\uFF0C\u5F88\u5FEB\u4F1A\u843D\u5728\u8FD9\u91CC\u3002",
       cardAria: (project: string, pr: number) =>

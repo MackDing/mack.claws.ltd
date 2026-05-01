@@ -27,7 +27,7 @@ export const products: Product[] = [
     },
     group: "agents",
     featured: true,
-    status: "alpha",
+    status: "stable",
   },
   {
     name: "CodexClaw",

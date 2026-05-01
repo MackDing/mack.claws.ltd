@@ -61,6 +61,16 @@ const liveLabel = product.liveLabel ? t.ui.card.live[product.liveLabel] : null;
           ALPHA
         </span>
       )}
+      {product.status === "beta" && (
+        <span class="inline-flex items-center rounded-full px-2 py-0.5 text-[10px] font-semibold font-mono tracking-wide bg-sky-500/15 text-sky-400 border border-sky-500/30">
+          BETA
+        </span>
+      )}
+      {product.status === "stable" && (
+        <span class="inline-flex items-center rounded-full px-2 py-0.5 text-[10px] font-semibold font-mono tracking-wide bg-emerald-500/15 text-emerald-400 border border-emerald-500/30">
+          v1.0
+        </span>
+      )}
       {product.liveUrl && liveLabel && (
         <a
           href={product.liveUrl}

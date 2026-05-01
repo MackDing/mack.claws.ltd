@@ -81,53 +81,6 @@ export const products: Product[] = [
     group: "agents",
   },
   {
-    name: "ai-agents",
-    repo: "Claws-ZH/ai-agents",
-    url: "https://github.com/Claws-ZH/ai-agents",
-    language: "Python",
-    stars: 1,
-    pitch: {
-      en: "AI agent fleet — devops, finance, media, office, social. Shared Anthropic Claude loop with domain-specific tools.",
-      zh: "AI Agent 舰队 —— devops / 财务 / 媒体 / 办公 / 社交。共用 Claude loop,每个领域各自的工具集。",
-    },
-    group: "agents",
-  },
-  {
-    name: "zh-policy-rag",
-    repo: "MackDing/zh-policy-rag",
-    url: "https://github.com/MackDing/zh-policy-rag",
-    language: "Python",
-    stars: 1,
-    pitch: {
-      en: "Chinese policy and regulation RAG system. Multi-source retrieval, Corrective RAG, OpenAI-compatible LLM integration.",
-      zh: "中文政策法规 RAG 系统。多源检索、Corrective RAG、OpenAI 兼容 LLM 接入。",
-    },
-    group: "agents",
-  },
-  {
-    name: "claude-context-health",
-    repo: "MackDing/claude-context-health",
-    url: "https://github.com/MackDing/claude-context-health",
-    language: null,
-    stars: 1,
-    pitch: {
-      en: "Claude Code context-health diagnosis guide — spot and fix context degradation in long sessions.",
-      zh: "Claude Code 上下文健康诊断指南 —— 在长会话里发现并修复上下文退化。",
-    },
-    group: "devtools",
-  },
-  {
-    name: "claude-cli-session-monitor",
-    repo: "MackDing/claude-cli-session-monitor",
-    url: "https://github.com/MackDing/claude-cli-session-monitor",
-    language: "Shell",
-    pitch: {
-      en: "Monitor and observe Claude CLI sessions — usage, health, anomalies.",
-      zh: "观察 Claude CLI 会话 —— 用量、健康度、异常行为,一目了然。",
-    },
-    group: "devtools",
-  },
-  {
     name: "network-egress-doctor",
     repo: "MackDing/network-egress-doctor",
     url: "https://github.com/MackDing/network-egress-doctor",

@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # weekly-star-report.sh — diff today's star snapshot vs 7 days ago,
-# print a markdown report. Designed to be invoked by an OpenClaw cron
-# job that captures stdout and delivers it to Telegram.
+# print a markdown report. Designed to be piped to Telegram by
+# portal-weekly-stars-tg.sh (pure bash, 0 LLM tokens).
 #
 # Run anytime; it just reads .rebuild-logs/stars-*.json snapshots.
 

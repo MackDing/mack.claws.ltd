@@ -10,7 +10,7 @@ const t = i18n[lang];
 
 const gh = await getGitHubData(products.map((p) => p.repo));
 
-const groups = ["agents", "devtools", "fun"] as const;
+const groups = ["agents"] as const;
 const grouped = groups
   .map((g) => ({
     key: g,

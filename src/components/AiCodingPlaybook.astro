@@ -13,7 +13,10 @@ const t = i18n[lang].playbook;
       <span class="section-eyebrow reveal reveal-1">
         <span class="chip-dot bg-[color:var(--color-accent-bright)]"></span>{t.eyebrow}
       </span>
-      <h2 class="section-title reveal reveal-2 mt-4 text-3xl md:text-4xl text-balance">
+      <p class="reveal reveal-2 mt-4 text-sm md:text-base font-display tracking-tight text-[color:var(--color-accent-bright)]">
+        {t.kicker}
+      </p>
+      <h2 class="section-title reveal reveal-2 mt-2 text-3xl md:text-4xl text-balance">
         {t.title}
       </h2>
       <p class="reveal reveal-3 mt-5 text-[color:var(--color-fg-muted)] text-pretty leading-relaxed">
@@ -21,21 +24,38 @@ const t = i18n[lang].playbook;
       </p>
     </div>
 
-    <ol class="mt-12 grid gap-4 md:grid-cols-2 lg:grid-cols-3 list-none p-0">
+    <ol class="mt-12 grid gap-5 md:grid-cols-2 list-none p-0">
       {t.steps.map((step, i) => (
-        <li class={`card p-5 reveal reveal-${(i % 4) + 2}`}>
-          <div class="inline-flex items-center justify-center w-9 h-9 rounded-lg border border-[color:var(--color-border)] bg-[color:var(--color-surface)] text-[color:var(--color-accent-bright)]">
-            <Icon name={step.icon as any} size={18} />
+        <li class={`card p-6 reveal reveal-${(i % 4) + 2} flex flex-col gap-3`}>
+          <div class="flex items-center gap-3">
+            <div class="inline-flex items-center justify-center w-9 h-9 rounded-lg border border-[color:var(--color-border)] bg-[color:var(--color-surface)] text-[color:var(--color-accent-bright)]">
+              <Icon name={step.icon as any} size={18} />
+            </div>
+            <span class="text-[11px] uppercase tracking-[0.14em] px-2 py-0.5 rounded-md border border-[color:var(--color-border)] text-[color:var(--color-fg-muted)]">
+              {step.antiPattern}
+            </span>
           </div>
-          <h3 class="mt-4 font-display font-semibold text-[color:var(--color-fg)] tracking-tight">
+          <h3 class="font-display font-semibold text-[color:var(--color-fg)] tracking-tight text-lg leading-snug">
             {step.title}
           </h3>
-          <p class="mt-1.5 text-sm leading-relaxed text-[color:var(--color-fg-muted)]">
+          <p class="text-sm leading-relaxed text-[color:var(--color-fg-muted)]">
             {step.body}
+          </p>
+          <p class="text-sm leading-relaxed text-[color:var(--color-fg)] border-l-2 border-[color:var(--color-accent-bright)] pl-3 italic opacity-90">
+            {step.example}
           </p>
         </li>
       ))}
     </ol>
+
+    <aside class="mt-10 card p-6 reveal reveal-3 border-[color:var(--color-accent-bright)]/40">
+      <div class="text-[11px] uppercase tracking-[0.14em] text-[color:var(--color-accent-bright)]">
+        {t.nobodyTellsYouLabel}
+      </div>
+      <p class="mt-2 text-[color:var(--color-fg)] text-base md:text-lg leading-relaxed text-pretty">
+        {t.nobodyTellsYou}
+      </p>
+    </aside>
 
     <p class="mt-8 text-xs text-[color:var(--color-fg-muted)] opacity-80">
       {t.credit}

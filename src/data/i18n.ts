@@ -10,7 +10,7 @@ export const i18n = {
         "Mack Ding \u2014 AI-native developer in Shenzhen. I build quiet open-source tools around AI agents, LLM gateways, and developer productivity.",
     },
     nav: {
-      projects: "Projects",
+      projects: "Playbook",
       contributions: "Contributions",
       contact: "Contact",
       githubAria: "GitHub profile",
@@ -54,6 +54,20 @@ export const i18n = {
           body: "Guides and patterns I\u2019ve learned the hard way, written down so the next person doesn\u2019t have to.",
         },
       ],
+    },
+    playbook: {
+      eyebrow: "AI coding playbook",
+      title: "From requirement to product. Six rules that keep the model honest.",
+      body: "The job isn\u2019t typing code. It\u2019s keeping the model honest, the context clean, and the change small. These rules are reusable \u2014 steal them.",
+      steps: [
+        { icon: "sparkles", title: "1. Clarify before coding", body: "Make the model state assumptions out loud. If the request is ambiguous, ask. Two interpretations beat one silent guess." },
+        { icon: "layers", title: "2. Plan in writing, not in your head", body: "Break the task into 3\u20137 steps. Each step gets one verifiable success check. No plan = no progress." },
+        { icon: "terminal", title: "3. Smallest change that works", body: "Cut every line that wasn\u2019t asked for. If 200 lines could be 50, rewrite. Speculative code is a bug." },
+        { icon: "sparkles", title: "4. Verify the effect, not the command", body: "Exit code 0 is not \u201cdone\u201d. Open the page. Read the diff. Check the side effect. Trust nothing until you see it." },
+        { icon: "layers", title: "5. Protect the context", body: "One task per session. Persist decisions to a file (CLAUDE.md, SKILL.md). Use subagents for exploration so noise stays out of the main thread." },
+        { icon: "terminal", title: "6. Surgical edits only", body: "Touch only what the task needs. Match existing style. No drive-by refactors. Every changed line should trace back to the request." },
+      ],
+      credit: "Distilled from Andrej Karpathy\u2019s notes, claude-context-health, and oh-my-codex.",
     },
     projects: {
       eyebrowLabel: "Projects",
@@ -143,7 +157,7 @@ export const i18n = {
       elsewhere: "Elsewhere",
       thisSite: "This site",
       links: {
-        projects: "Projects",
+        projects: "Playbook",
         upstream: "Upstream contributions",
         source: "Source on GitHub",
       },
@@ -168,7 +182,7 @@ export const i18n = {
         "Mack Ding \u2014 AI-native \u5F00\u53D1\u8005\uFF0C\u5728\u6DF1\u5733\u3002\u9020\u5B89\u9759\u7684\u5F00\u6E90\u5DE5\u5177 \u2014\u2014 AI Agent\u3001LLM \u7F51\u5173\u3001\u5F00\u53D1\u8005\u5DE5\u4F5C\u6D41\u3002",
     },
     nav: {
-      projects: "\u9879\u76EE",
+      projects: "\u624B\u518C",
       contributions: "\u4E0A\u6E38\u8D21\u732E",
       contact: "\u8054\u7CFB",
       githubAria: "GitHub \u4E3B\u9875",
@@ -212,6 +226,20 @@ export const i18n = {
           body: "\u90A3\u4E9B\u6211\u8E29\u8FC7\u5751\u624D\u603B\u7ED3\u51FA\u6765\u7684\u505A\u6CD5\uFF0C\u5199\u4E0B\u6765\uFF0C\u8BA9\u4E0B\u4E00\u4E2A\u4EBA\u5C11\u8D70\u70B9\u5F2F\u8DEF\u3002",
         },
       ],
+    },
+    playbook: {
+      eyebrow: "AI 编程手册",
+      title: "从需求到产品。六条规则，让模型保持诚实。",
+      body: "真正的工作不是敲代码，而是让模型保持诚实、上下文保持干净、改动保持最小。这些规则可以复用 —— 拿走就用。",
+      steps: [
+        { icon: "sparkles", title: "1. 写代码前先澄清", body: "让模型把假设说出来。需求模糊就先问。两种明确的解释，胜过一个沉默的猜测。" },
+        { icon: "layers", title: "2. 把计划写下来，别留在脑子里", body: "把任务拆成 3–7 步。每一步都要有一个可验证的成功标准。没计划，等于没进展。" },
+        { icon: "terminal", title: "3. 用最小的改动解决问题", body: "砍掉所有没被要求的代码。200 行能变 50 行，就重写。投机性代码本身就是 bug。" },
+        { icon: "sparkles", title: "4. 验证效果，而不是命令", body: "退出码 0 不等于「完成」。打开页面、看 diff、检查副作用。眼见之前，什么都别信。" },
+        { icon: "layers", title: "5. 守好上下文", body: "一个会话只做一件事。把决定写进文件（CLAUDE.md / SKILL.md），别靠记忆。探索性工作交给子 Agent，让噪音留在外面。" },
+        { icon: "terminal", title: "6. 只做外科手术式修改", body: "只动任务要动的地方。沿用既有风格，不要顺手重构。每一行改动都能追溯到原始需求。" },
+      ],
+      credit: "灵感来自 Andrej Karpathy 的笔记、claude-context-health 与 oh-my-codex。",
     },
     projects: {
       eyebrowLabel: "\u9879\u76EE",
@@ -302,7 +330,7 @@ export const i18n = {
       elsewhere: "\u522B\u5904",
       thisSite: "\u8FD9\u4E2A\u7AD9\u70B9",
       links: {
-        projects: "\u9879\u76EE",
+        projects: "\u624B\u518C",
         upstream: "\u4E0A\u6E38\u8D21\u732E",
         source: "GitHub \u6E90\u7801",
       },

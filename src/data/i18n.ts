@@ -17,9 +17,9 @@ export const i18n = {
     },
     hero: {
       badge: "AI-native dev \u00b7 Shenzhen",
-      titleLine1: "I build quiet tools.",
-      titleLine2: "The ones you forget you\u2019re using.",
-      sub: "AI-native developer in Shenzhen. Open source, mostly \u2014 small, focused pieces at the edge of AI agents, LLM gateways, and the long developer loop. Shipped alongside Claude Code, Codex, and too much coffee.",
+      titleLine1: "Mack Ding. Shenzhen. Building OPC.",
+      titleLine2: "Token gateway + daily decision intel for one-person companies.",
+      sub: "Open source on GitHub, paid product at opc.ren. Built solo with Claude Code and Codex. Upstream PRs landing in OpenClaw, LiteLLM, and Netcatty.",
       ctaFollow: "Follow @MackDing",
       ctaFollowAria: (n: number | null) =>
         n === null
@@ -214,9 +214,9 @@ export const i18n = {
     },
     hero: {
       badge: "AI-native \u00b7 \u6DF1\u5733",
-      titleLine1: "\u6211\u9020\u5B89\u9759\u7684\u5DE5\u5177\u3002",
-      titleLine2: "\u4F60\u751A\u81F3\u610F\u8BC6\u4E0D\u5230\u81EA\u5DF1\u5728\u7528\u7684\u90A3\u79CD\u3002",
-      sub: "AI-native \u5F00\u53D1\u8005\uFF0C\u5728\u6DF1\u5733\u3002\u5F00\u6E90\u4E3A\u4E3B \u2014\u2014 \u4E13\u6CE8\u5728 AI Agent\u3001LLM \u7F51\u5173\u3001\u4EE5\u53CA\u957F\u8DD1\u7684\u5F00\u53D1\u8005\u5DE5\u4F5C\u6D41\u7684\u8FB9\u754C\u4E0A\u3002\u7528 Claude Code\u3001Codex \u548C\u4E00\u5806\u597D\u5947\u5FC3\u9020\u51FA\u6765\u3002",
+      titleLine1: "Mack Ding。深圳。在造 OPC。",
+      titleLine2: "给一人公司用的 Token 网关 + 每日决策情报。",
+      sub: "开源在 GitHub，付费产品在 opc.ren。一个人，配 Claude Code 和 Codex 一起 ship。上游 PR 已并入 OpenClaw、LiteLLM、Netcatty。",
       ctaFollow: "\u5173\u6CE8 @MackDing",
       ctaFollowAria: (n: number | null) =>
         n === null

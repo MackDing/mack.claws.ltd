@@ -94,6 +94,14 @@ export const i18n = {
       nobodyTellsYou: "The bottleneck is not the model. It\u2019s your verification loop. The teams shipping fast with AI aren\u2019t prompt geniuses \u2014 they\u2019re obsessed with how to check the work in under 60 seconds.",
       credit: "Forged on real PRs. Inspired by Karpathy\u2019s notes, claude-context-health, and oh-my-codex.",
     },
+    stats: {
+      eyebrow: "Receipts",
+      body: "Numbers, not promises. All live from GitHub. Updates on every build.",
+      followers: "GitHub followers",
+      stars: "Stars across products",
+      upstream: "Upstream PRs merged",
+      repos: "Public repos",
+    },
     projects: {
       eyebrowLabel: "Projects",
       title: "A small catalog of open-source tools.",
@@ -290,6 +298,14 @@ export const i18n = {
       nobodyTellsYouLabel: "没人告诉你的真相",
       nobodyTellsYou: "瓶颈不是模型，是你的验证回路。用 AI 跑得快的团队，不是 prompt 高手 —— 他们偏执地优化「怎么在 60 秒内验完一次改动」。",
       credit: "在真实 PR 里淬出来的。灵感来自 Karpathy 的笔记、claude-context-health、oh-my-codex。",
+    },
+    stats: {
+      eyebrow: "数据账本",
+      body: "数字不撒谎。全部实时从 GitHub 拉，构建一次更新一次。",
+      followers: "GitHub 关注者",
+      stars: "产品总 Star",
+      upstream: "上游合并 PR",
+      repos: "开源仓库",
     },
     projects: {
       eyebrowLabel: "\u9879\u76EE",

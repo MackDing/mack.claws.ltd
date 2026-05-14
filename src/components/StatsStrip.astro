@@ -1,0 +1,62 @@
+---
+import CountUp from "./CountUp";
+import { i18n, type Lang } from "../data/i18n";
+import { getGitHubData } from "../data/github";
+import { products } from "../data/products";
+
+type Props = { lang?: Lang };
+const { lang = "en" } = Astro.props;
+const t = i18n[lang].stats;
+
+const gh = await getGitHubData(products.map((p) => p.repo));
+
+// Sum stars across all listed products (skip nulls / unknown).
+const totalStars = Object.values(gh.stars ?? {}).reduce(
+  (acc, n) => acc + (typeof n === "number" ? n : 0),
+  0
+);
+const followers = gh.user?.followers ?? 0;
+const repos = gh.user?.public_repos ?? 0;
+
+// Hardcoded: upstream PRs merged (matches UpstreamContributions data).
+const upstreamMerged = 4;
+
+const items = [
+  { value: followers, label: t.followers, suffix: "" },
+  { value: totalStars, label: t.stars, suffix: "" },
+  { value: upstreamMerged, label: t.upstream, suffix: "" },
+  { value: repos, label: t.repos, suffix: "+" },
+];
+---
+
+<section class="relative py-16 md:py-20 border-y border-[color:var(--color-border)]/60 bg-[color:var(--color-surface)]/30">
+  <div class="container-page">
+    <div class="max-w-2xl">
+      <span class="section-eyebrow reveal reveal-1">
+        <span class="chip-dot bg-[color:var(--color-accent-bright)]"></span>{t.eyebrow}
+      </span>
+      <p class="reveal reveal-2 mt-3 text-sm text-[color:var(--color-fg-muted)] text-pretty leading-relaxed">
+        {t.body}
+      </p>
+    </div>
+
+    <dl class="mt-10 grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8">
+      {items.map((it, i) => (
+        <div class={`reveal reveal-${(i % 4) + 2} flex flex-col items-start gap-2`}>
+          <dt class="font-display font-semibold text-[color:var(--color-fg)] text-4xl md:text-5xl tracking-tight tabular-nums leading-none">
+            <CountUp
+              client:visible
+              to={it.value}
+              duration={1.8}
+              separator=","
+              suffix={it.suffix}
+            />
+          </dt>
+          <dd class="text-xs md:text-sm uppercase tracking-[0.14em] text-[color:var(--color-fg-muted)]">
+            {it.label}
+          </dd>
+        </div>
+      ))}
+    </dl>
+  </div>
+</section>

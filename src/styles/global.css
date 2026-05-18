@@ -609,3 +609,22 @@
     }
   }
 }
+
+@layer utilities {
+  /* Chinese typography: honor \n in i18n strings as visual line breaks,
+     and apply punctuation/break rules suited for CJK reading rhythm. */
+  :lang(zh-Hans) p,
+  :lang(zh-Hans) h1,
+  :lang(zh-Hans) h2,
+  :lang(zh-Hans) h3,
+  :lang(zh-Hans) li {
+    white-space: pre-line;
+    word-break: normal;
+    overflow-wrap: anywhere;
+    line-break: strict;
+    hanging-punctuation: allow-end last;
+  }
+  :lang(zh-Hans) .text-pretty {
+    text-wrap: pretty;
+  }
+}

@@ -36,11 +36,11 @@ This file is **not** committed to the repo.
 Production schedule lives in the Mack server user crontab (`crontab -l`):
 
 ```cron
-0 6 * * * /usr/bin/flock -n /tmp/mack-portal-rebuild.lock /usr/bin/env bash /home/mack/Projects/mack-portal/scripts/daily-rebuild.sh >> /home/mack/Projects/mack-portal/.rebuild-logs/cron.log 2>&1
-0 9 * * 1 /usr/bin/flock -n /tmp/portal-weekly-stars.lock /home/mack/bin/portal-weekly-stars-tg.sh 2>&1 | /usr/bin/logger -t portal-weekly-stars
+0 6 * * * /usr/bin/flock -n /tmp/mack-portal-rebuild.lock /usr/bin/env MACK_PORTAL_REPO=/path/to/mack-portal bash /path/to/mack-portal/scripts/daily-rebuild.sh >> /path/to/mack-portal/.rebuild-logs/cron.log 2>&1
+0 9 * * 1 /usr/bin/flock -n /tmp/portal-weekly-stars.lock /path/to/mack-portal/scripts/portal-weekly-stars-tg.sh 2>&1 | /usr/bin/logger -t portal-weekly-stars
 ```
 
-`~/bin/portal-weekly-stars-tg.sh` is a symlink pointing back to this repo so a `git pull` ships changes automatically.
+The weekly wrapper may also be symlinked into an operator-owned `bin` directory so a `git pull` ships changes automatically.
 
 ## History
 

@@ -7,7 +7,8 @@
 
 set -uo pipefail
 
-REPO="${MACK_PORTAL_REPO:-/home/mack/Projects/mack-portal}"
+SCRIPT_DIR="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)"
+REPO="${MACK_PORTAL_REPO:-$(cd -- "$SCRIPT_DIR/.." && pwd)}"
 LOG_DIR="$REPO/.rebuild-logs"
 
 TODAY=$(date +%Y-%m-%d)

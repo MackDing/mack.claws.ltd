@@ -11,7 +11,8 @@ set -uo pipefail
 # Ensure user-local bins (pnpm via npm-global) are on PATH for cron.
 export PATH="$HOME/.npm-global/bin:$HOME/.local/bin:/usr/local/bin:/usr/bin:/bin"
 
-REPO="${MACK_PORTAL_REPO:-/home/mack/Projects/mack-portal}"
+SCRIPT_DIR="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)"
+REPO="${MACK_PORTAL_REPO:-$(cd -- "$SCRIPT_DIR/.." && pwd)}"
 CACHE_FILE="$REPO/node_modules/.cache/mack-portal/github.json"
 LOG_DIR="$REPO/.rebuild-logs"
 LOG_FILE="$LOG_DIR/$(date +%Y-%m-%d).log"
